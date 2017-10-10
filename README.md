@@ -1,7 +1,7 @@
 #### Title: Ten simple rules to move your software to cloud
 
 
-Authors: Yasset Perez-Riverol, Michael Crosue* 
+Authors: Yasset Perez-Riverol, Michael R. Crusoe* 
 
 
 
