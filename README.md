@@ -11,4 +11,8 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 
 However, even if source code and data are published in a public repository (e.g Github) alongside the paper as open source artifacts, they come with many dependencies, configurations, versions that make their use hard to achieve [DOI:10.1145/2723872.2723882]. The build, installation and deployment of the bioinformatics solution (e.g. software or workflow) often requires internal knowledge that is missing from the published manuscript. In addition, most of the bioinformatics software is developed by different teams but used in combination thorugth workflows, scripts or pipelines. This adds an additional layer of complexity that introduce challenges for dependency compatibilities, serial and parallel steps, varied software data file types and user-defined parameters.
 
-In order to repond to these challenges, new strategies
+Software containers has emerged as a powerful technology to documment, distribute, and deploy bioinformatics software [PMID: 28379341]. Containers are easily packaged, lightweight software components and libraries designed to run anywhere [PMID: 28379341]. Among different options Conda packages, Docker and Singularity containers are promising technologies for the field of computational biology and bioinformatics software reproducibility.   
+
+### One tool, one container
+
+###
