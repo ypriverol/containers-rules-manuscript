@@ -1,4 +1,4 @@
-#### Title: Ten simple rules to move your software to cloud
+#### Title: Ten simple rules to contenarized your bioinformatics software
 
 
 Authors: Yasset Perez-Riverol, Felipe da Veiga Leprevost, Michael R. Crusoe* 
