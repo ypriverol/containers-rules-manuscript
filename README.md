@@ -17,6 +17,12 @@ This manuscript describes a core set of recommendations and guidelines to improv
 
 In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).
 
-### 1. One tool, one container
+### 1. One tool, one container.
 
-###
+### 2. When possible: Use auto-containerization
+
+### 3. Eschew ENTRYPOINT
+
+### 4. Versions should be explicit
+
+### 5. 
