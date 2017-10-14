@@ -1,4 +1,4 @@
-#### Title: Ten simple rules to contenarized your bioinformatics software
+#### Title:  Recomendations to contenarized your bioinformatics software
 
 
 Authors: Yasset Perez-Riverol, Felipe da Veiga Leprevost, Michael R. Crusoe
@@ -25,4 +25,4 @@ In this manuscript, software is broadly defined to include command line tools, g
 
 ### 4. Versions should be explicit
 
-### 5. 
+### 5. Metadata should
