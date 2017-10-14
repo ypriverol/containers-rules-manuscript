@@ -25,4 +25,6 @@ In this manuscript, software is broadly defined to include command line tools, g
 
 ### 4. Versions should be explicit
 
-### 5. Metadata should
+### 5. More Metadata
+
+### 6. Keep size minimun.
