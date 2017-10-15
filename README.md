@@ -21,7 +21,8 @@ In this manuscript, software is broadly defined to include command line tools, g
 
 Microservice and modular architecutres [DOI: 10.1109/MS.2016.64] is a way of breaking large software projects into smaller, independent, and loosely coupled modules. This software applications can be seen as a suite of independently deployable, small, modular components in which each tool runs a **unique** process and communicates through a well-defined, lightweight mechanism to serve a business goal [DOI: 10.4103/2153-3539.194835]. Each of these indeppendent modules are referred to as a _container_.  A container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating system components (e.g. dependencies) required for execution [PMID: 28379341].
 
-In computational biology, this means a piece of software that perform a unique task with a weel-define goal (e.g. sequence alligner, mass spectra identification).
+Containers should be defined as mosr granulaer as possible with the premise _one Tool, one Container_. Each container should encapsulate only one piece of software, tool that perform a unique task with a weel-define goal (e.g. sequence alligner, mass spectra identification).
+
 
 
 
