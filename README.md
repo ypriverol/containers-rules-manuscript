@@ -19,6 +19,8 @@ In this manuscript, software is broadly defined to include command line tools, g
 
 ### 1. One tool, one container.
 
+Recently, multiple authors has pointed out the benefits of the microservice and modular architecutres. In a microservice architecture the development of software applications can be seen as a suite of independently deployable, small, modular components in which each tool runs a **unique** process and communicates through a well-defined, lightweight mechanism to serve a business goal. In computational biology, this means a piece of software that perform a unique task with a weel-define goal (e.g. sequence alligner, mass spectra idnetification).    
+
 ### 2. When possible: Use auto-containerization
 
 ### 3. Eschew ENTRYPOINT
@@ -27,4 +29,4 @@ In this manuscript, software is broadly defined to include command line tools, g
 
 ### 5. More Metadata
 
-### 6. Keep size minimun.
+### 6. Keep everything minimun
