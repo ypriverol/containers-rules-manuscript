@@ -30,10 +30,10 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 - _User’s acceptability_:  tool container encapsulates domain business process units, so it can be more easily checked and used.
 - _Container Size_: An important factor to define the granularity of a container is the size. Smaller containers are much quicker to download the image from registries and therefore it can be distributed to different machines much quicker. Less code/less programs in the container means less attack surface.
 
+### 2. When possible use _packaging_.
 
-
-
-### 2. When possible: Use auto-containerization
+Package managers automate the installation of complex sets of
+software packages. _Conda_, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. In addition, _Conda_ has join to other popular packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of installing from a pre-built binary. 
 
 ### 3. Eschew ENTRYPOINT
 
