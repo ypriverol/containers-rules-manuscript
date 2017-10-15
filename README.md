@@ -1,7 +1,7 @@
 #### Title:  Recomendations to contenarized your bioinformatics software
 
 
-Authors: Yasset Perez-Riverol, Felipe da Veiga Leprevost, Michael R. Crusoe
+Authors: Yasset Perez-Riverol , Felipe da Veiga Leprevost, Michael R. Crusoe
 
 
 ## Introduction
@@ -21,13 +21,14 @@ In this manuscript, software is broadly defined to include command line tools, g
 
 Microservice and modular architecutres [DOI: 10.1109/MS.2016.64] is a way of breaking large software projects into smaller, independent, and loosely coupled modules. This software applications can be seen as a suite of independently deployable, small, modular components in which each tool runs a **unique** process and communicates through a well-defined, lightweight mechanism to serve a business goal [DOI: 10.4103/2153-3539.194835]. Each of these indeppendent modules are referred to as a _container_.  A container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating system components (e.g. dependencies) required for execution [PMID: 28379341].
 
-Containers should be defined as mosr granulaer as possible with the premise _one Tool, one Container_. Each container should encapsulate only one piece of software, tool that perform a unique task with a weel-define goal (e.g. sequence alligner, mass spectra identification).
+Containers should be defined as mosr granulaer as possible with the premise _one Tool, one Container_. Each container should encapsulate only one piece of software, tool that perform a unique task with a weel-define goal (e.g. sequence alligner, mass spectra identification). In order to design the level of _granularity_, different metrics should be consider:
 
-
-
-
-
-
+- _Lower complexity_: the encapsulated software shouldn't be a complex enviroment of dependencies, tools and scripts.
+- _Reusability_: a tool condainer can be safely reused by any other workflow component or tasks through its access interface.
+- _Interoperability_: different tools can be easily connected.
+- _Maintainability_: the mainteiners of the software component should be take into account. If multiple tools comming from multiple teams and developers is added to the same container it makes their mantenability more complex.
+- _User’s acceptability_:  tool container encapsulates domain business process units, so it can be more easily checked and used.
+- _Container Size_: An important factor to define the granularity of a container is the size. Smaller containers are much quicker to download the image from registries and therefore it can be distributed to different machines much quicker. Less code/less programs in the container means less attack surface.
 
 
 
@@ -41,3 +42,5 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 ### 5. More Metadata
 
 ### 6. Keep everything minimun
+
+### 7. No Data.
