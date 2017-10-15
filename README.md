@@ -37,12 +37,10 @@ software packages. _Conda_, the most popular package manager in research softwar
 
 You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes) contains enougth information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see **Recomendation X**). The _BioConda_ package can be use in any with any Python installation and the BioContainers project [PMID: 28379341] has developed an automatic system to build software containers for multiple technolgies such as Docker, rkt or Singularity [PMID: 28494014].
 
-### 3. Eschew ENTRYPOINT
+### 3. Keep everything minimun, No Data
 
-### 4. Versions should be explicit
+### 4. Eschew ENTRYPOINT
 
-### 5. More Metadata
+### 5. Versions should be explicit
 
-### 6. Keep everything minimun
-
-### 7. No Data.
+### 6. More Metadata
