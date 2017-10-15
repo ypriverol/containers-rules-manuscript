@@ -30,19 +30,12 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 - _User’s acceptability_:  tool container encapsulates domain business process units, so it can be more easily checked and used.
 - _Container Size_: An important factor to define the granularity of a container is the size. Smaller containers are much quicker to download the image from registries and therefore it can be distributed to different machines much quicker. Less code/less programs in the container means less attack surface.
 
-### 2. When possible firt a Conda package.
+### 2. When possible firt a BioConda recipe.
 
 Package managers automate the installation of complex sets of
-software packages. _Conda_, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. In addition, _Conda_ has join to other popular packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of installing from a pre-built binary.
+software packages. _Conda_, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies for many languages such as C, C++, R, Java and of course Python tools. In addition, _Conda_ has join to other popular packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of installing from a pre-built binary.
 
-_Conda_ offers a platform independent system that package quickly becomes a
-complex task that requires many installations.
-Conda provide a solution for this situation: when you install package A, it will automatically install all
-the dependencies of A. So you don’t have to install them one by one, manually. This save you
-great amount of time.
-
-If your package is in _Conda_
-
+You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe contains enougth information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see **Recomendation X**). The _BioConda_ package can be use in any with any Python installation and the BioContainers project [PMID: 28379341] has developed an automatic system to build software containers for multiple technolgies such as Docker, rkt or Singularity [PMID: 28494014].
 
 
 
