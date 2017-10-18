@@ -38,6 +38,8 @@ One of the decisions that will most likely impact on your final container image 
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included both in the metadata of the container (for findability reasons) and in the tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `v<version-of-the-tool>_cv<version-of-the-container>`. The container version, which tracks changes to the container itself, but not the tool, should be versioned through semantic versioning ideally, to signal backward compatibility/incompatibility when this applies.
 
+If a git clone or equivalent is done, a specific tagged version should be cloned, never the *latest* of a branch. A simple clone will copy the latest code, but other users can't reproduce the operation as you don't know which commit was used, and code could have changed in the meanwhile. Upstream author should be asked to create a release if not available. In the worst case, the HEAD commit id of the clone should be used as the tool version for the container.
+
 ### 4. Eschew ENTRYPOINT
 
 ### 5. More Metadata
