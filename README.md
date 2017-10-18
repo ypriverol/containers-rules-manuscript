@@ -34,7 +34,9 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 
 One of the decisions that will most likely impact on your final container image size will be your base image. If you can, start with a lightweight base image such as Alpine or similar, always at a fixed version. If installing your software on top of such a minimal operating system doesn't work out well, only then move to a larger, stock-image where installation of your tool software might be simpler (such as Ubuntu). Preferring stock images means that many other people will be using them and that your container will be pulled faster as shared layers are more likely. Always aim to have predefined images from where you choose (always the same Alpine version as first choice and always the same Ubuntu version as second choice), so that most of your containers share that base image.
 
-### 3. Versions should be explicit
+### 3. Versions should be explicit, and consider both the tool version and the container vesion
+
+The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included both in the metadata of the container (for findability reasons) and in the tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `v<version-of-the-tool>_cv<version-of-the-container>`. The container version, which tracks changes to the container itself, but not the tool, should be versioned through semantic versioning ideally, to signal backward compatibility/incompatibility when this applies.
 
 ### 4. Eschew ENTRYPOINT
 
