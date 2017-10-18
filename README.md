@@ -60,3 +60,13 @@ Since containers are being constantly being pushed and pulled over the internet,
 - Make sure you clean caches, uneeded downloads and temporary files.
 - In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers, development libraries and caches/temporary files) are left within the same layer.
 - If installing or cloning from a git repo, use shallow clones, which for large repos will save a lot of space.
+
+### 9. Add some testing logic
+
+If others want to build locally your container, want to rebuild it later on with an updated base image, want to integrate it to a continous integration system for building it or for many other reasons, users might want to test that the built container still serves the function for which it was originally designed. For this is useful to add to the container some testing logic inside it (in the form of a bash script for instance) in an standard location (here we propose a file called `runTest.sh`, executable and in the path) which includes all the logic for:
+- Installing any packages that might be needed for testing, such as wget for instance to retrieve example files for the run.
+- Obtain sample files for testing, which might be for instance an example data set from a reference archive.
+- Run the software that the container wraps with that data to produce and output inside the container.
+- Compare the produced output and exit with an error code if the comparison is not succesful.
+This file containing the testing logic is not meant to be executed during container buildtime, so the retrieved data/packages don't increase the size of the container when this is executed once the container is built. This means that, because the file is inside the container, any user who has built the container or downloaded the container image can check that the container is working adequately by executing `runTest.sh` through the container.
+
