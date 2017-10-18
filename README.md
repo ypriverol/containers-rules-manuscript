@@ -30,38 +30,39 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 - _User’s acceptability_:  tool container encapsulates domain business process units, so it can be more easily checked and used.
 - _Container Size_: An important factor to define the granularity of a container is the size. Smaller containers are much quicker to download the image from registries and therefore it can be distributed to different machines much quicker. Less code/less programs in the container means less attack surface.
 
-### 2. Choose a base image wisely.
 
-One of the decisions that will most likely impact on your final container image size will be your base image. If you can, start with a lightweight base image such as Alpine or similar, always at a fixed version. If installing your software on top of such a minimal operating system doesn't work out well, only then move to a larger, stock-image where installation of your tool software might be simpler (such as Ubuntu). Preferring stock images means that many other people will be using them and that your container will be pulled faster as shared layers are more likely. Always aim to have predefined images from where you choose (always the same Alpine version as first choice and always the same Ubuntu version as second choice), so that most of your containers share that base image.
-
-### 3. Versions should be explicit, and consider both the tool version and the container vesion
+### 2. Versions should be explicit, and consider both the tool version and the container vesion
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included both in the metadata of the container (for findability reasons) and in the tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `v<version-of-the-tool>_cv<version-of-the-container>`. The container version, which tracks changes to the container itself, but not the tool, should be versioned through semantic versioning ideally, to signal backward compatibility/incompatibility when this applies.
 
 If a git clone or equivalent is done, a specific tagged version should be cloned, never the *latest* of a branch. A simple clone will copy the latest code, but other users can't reproduce the operation as you don't know which commit was used, and code could have changed in the meanwhile. Upstream author should be asked to create a release if not available. In the worst case, the HEAD commit id of the clone should be used as the tool version for the container.
 
-### 4. Eschew ENTRYPOINT
+### 3. Eschew ENTRYPOINT
 
-### 5. More Metadata
+### 4. More Metadata
 
-### 6. When possible first a package and then a container.
+### 5. When possible first a package and then a container.
 
 Package managers automate the installation of complex sets of software packages. _Conda_, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies for many languages such as C, C++, R, Java and of course Python tools. In addition, _Conda_ has join to other popular packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of installing from a pre-built binary.
 
 You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes) contains enougth information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see **Recomendation X**). The _BioConda_ package can be use in any with any Python installation and the BioContainers project [PMID: 28379341] has developed an automatic system to build software containers for multiple technolgies such as Docker, rkt or Singularity [PMID: 28494014].
 
-### 7. Relevant tools and software should be executable and in the path
+### 6. Relevant tools and software should be executable and in the path
 
-If for some reason the container needs to expose more than a single executable or script (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the container's default path. This will be mostly always the case by default for everything that is installed via a package manager (apt-get, pip, R install.package, etc) and you won't need to worry if that is the case, but if you are adding tailored made scripts or others that are not installed through a manager, then you need to take care of this. This will facilitate the use of the container as an environment or to specify alternative commands to the main entrypoint easily. 
+If for some reason the container needs to expose more than a single executable or script (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the container's default path. This will be mostly always the case by default for everything that is installed via a package manager (apt-get, pip, R install.package, etc) and you won't need to worry if that is the case, but if you are adding tailored made scripts or others that are not installed through a manager, then you need to take care of this. This will facilitate the use of the container as an environment or to specify alternative commands to the main entrypoint easily.
 
-### 8. Reduce the size of your container as much as possible
+### 7. Reduce the size of your container as much as possible
 
 Since containers are being constantly being pushed and pulled over the internet, their size matters. There are many tips to reduce the size of your container in build time:
 - Avoid instaling "recommended" packages in apt based systems.
-- Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at all, used in runtime when your container is being used by others. For instance, packages like gcc can use several hundreds megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software during container buildtime, but are not needed for runtime. 
+- Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at all, used in runtime when your container is being used by others. For instance, packages like gcc can use several hundreds megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software during container buildtime, but are not needed for runtime.
 - Make sure you clean caches, uneeded downloads and temporary files.
 - In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers, development libraries and caches/temporary files) are left within the same layer.
 - If installing or cloning from a git repo, use shallow clones, which for large repos will save a lot of space.
+
+### 8. Choose a base image wisely.
+
+One of the decisions that will most likely impact on your final container image size will be your base image. If you can, start with a lightweight base image such as Alpine or similar, always at a fixed version. If installing your software on top of such a minimal operating system doesn't work out well, only then move to a larger, stock-image where installation of your tool software might be simpler (such as Ubuntu). Preferring stock images means that many other people will be using them and that your container will be pulled faster as shared layers are more likely. Always aim to have predefined images from where you choose (always the same Alpine version as first choice and always the same Ubuntu version as second choice), so that most of your containers share that base image.
 
 ### 9. Add some testing logic
 
