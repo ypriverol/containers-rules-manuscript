@@ -30,7 +30,9 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 - _User’s acceptability_:  tool container encapsulates domain business process units, so it can be more easily checked and used.
 - _Container Size_: An important factor to define the granularity of a container is the size. Smaller containers are much quicker to download the image from registries and therefore it can be distributed to different machines much quicker. Less code/less programs in the container means less attack surface.
 
-### 2. Keep everything minimun.
+### 2. Choose a base image wisely.
+
+One of the decisions that will most likely impact on your final container image size will be your base image. If you can, start with a lightweight base image such as Alpine or similar, always at a fixed version. If installing your software on top of such a minimal operating system doesn't work out well, only then move to a larger, stock-image where installation of your tool software might be simpler (such as Ubuntu). Preferring stock images means that many other people will be using them and that your container will be pulled faster as shared layers are more likely. Always aim to have predefined images from where you choose (always the same Alpine version as first choice and always the same Ubuntu version as second choice), so that most of your containers share that base image.
 
 ### 3. Versions should be explicit
 
