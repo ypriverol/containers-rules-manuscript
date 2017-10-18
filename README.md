@@ -51,3 +51,12 @@ You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). Th
 ### 7. Relevant tools and software should be executable and in the path
 
 If for some reason the container needs to expose more than a single executable or script (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the container's default path. This will be mostly always the case by default for everything that is installed via a package manager (apt-get, pip, R install.package, etc) and you won't need to worry if that is the case, but if you are adding tailored made scripts or others that are not installed through a manager, then you need to take care of this. This will facilitate the use of the container as an environment or to specify alternative commands to the main entrypoint easily. 
+
+### 8. Reduce the size of your container as much as possible
+
+Since containers are being constantly being pushed and pulled over the internet, their size matters. There are many tips to reduce the size of your container in build time:
+- Avoid instaling "recommended" packages in apt based systems.
+- Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at all, used in runtime when your container is being used by others. For instance, packages like gcc can use several hundreds megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software during container buildtime, but are not needed for runtime. 
+- Make sure you clean caches, uneeded downloads and temporary files.
+- In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers, development libraries and caches/temporary files) are left within the same layer.
+- If installing or cloning from a git repo, use shallow clones, which for large repos will save a lot of space.
