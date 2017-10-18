@@ -72,3 +72,7 @@ If others want to build locally your container, want to rebuild it later on with
 - Compare the produced output and exit with an error code if the comparison is not succesful.
 This file containing the testing logic is not meant to be executed during container buildtime, so the retrieved data/packages don't increase the size of the container when this is executed once the container is built. This means that, because the file is inside the container, any user who has built the container or downloaded the container image can check that the container is working adequately by executing `runTest.sh` through the container.
 
+### 10. Check the license of the software
+
+When adding software or data in a container, always check their license. A free to use license is not always a free to distribute or copy. License *must* always be explicitly defined in your labels and depending on license, you must also include a copy of the license with the software. Same care must be applied to included data.
+If license is not specified, you should ask upstream author to provide a license.
