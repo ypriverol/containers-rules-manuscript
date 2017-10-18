@@ -32,7 +32,9 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 
 ### 2. Keep everything minimun.
 
-### 3. Versions should be explicit
+### 3. Versions should be explicit, and consider both the tool version and the container vesion
+
+The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included both in the metadata of the container (for findability reasons) and in the tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `v<version-of-the-tool>_cv<version-of-the-container>`. The container version, which tracks changes to the container itself, but not the tool, should be versioned through semantic versioning ideally, to signal backward compatibility/incompatibility when this applies.
 
 ### 4. Eschew ENTRYPOINT
 
