@@ -1,4 +1,4 @@
-#### Title:  Recommendations to contenarized your bioinformatics software
+#### Title:  Recommendations to containerize your bioinformatics software
 
 
 Authors: Yasset Perez-Riverol , Felipe da Veiga Leprevost, Michael R. Crusoe, Rafael C Jimenez
