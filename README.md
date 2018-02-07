@@ -1,7 +1,7 @@
-#### Title:  Recomendations to contenarized your bioinformatics software
+#### Title:  Recomendations to packaged and contenarized bioinformatics software
 
 
-Authors: Yasset Perez-Riverol , Felipe da Veiga Leprevost, Michael R. Crusoe
+Authors: Yasset Perez-Riverol , Felipe da Veiga Leprevost, Michael R. Crusoe, Rafael Jimenez, Bjorn Grunning
 
 
 ## Introduction
@@ -13,9 +13,14 @@ However, even if source code and data are published in a public repository (e.g 
 
 Software containers has emerged as a powerful technology to documment, distribute, and deploy bioinformatics software [PMID: 28379341]. Containers are easily packaged, lightweight software components and libraries designed to run anywhere [PMID: 28379341]. Among different options Conda packages, Docker and Singularity containers are promising technologies for the field of computational biology and bioinformatics software reproducibility. The BioContainers and BioConda communities released more than 3000 containers [PMID: 28379341] for bioinformatics community enabling the development of complex and reproducbles workflows and pipeines [PMID: 28559010, PMID: 27137889].
 
-This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software containers. It provides easy-to-implement recommendations that encourage adoption of containers technologies in bioinformatics and software development for research. It provides recomendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software.
+This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software packages and containers. It provides easy-to-implement recommendations that encourage adoption of packaging (e.g. conda) or containers (e.g. docker, singularity) technologies in bioinformatics and software development for research. It provides recomendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software.
 
 In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).
+
+### 1. A package first
+
+A software package is self-contained software including all the dependencies libraries and packages necesary to excecute the software. Some of the most popular and well-known packaging distribution system are homebrew (https://brew.sh/) or conda (https://conda.io/). The field of computational biology has built an strong community behind the conda package management due three major reasons: i) conda provides and strong virtual enviroment for developers by easily creating, save and switches between development environments; ii) conda is a native python enviroment with a huge and growing community of data sciencntits and researchers; iii) it was create for pytohn packages but it can distribute software packages for any language (e.g. R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN). The BioConda community (https://bioconda.github.io/) has created more created conda packages for more than 4000 bioinformatics softwares.
+
 
 ### 1. One tool, one container.
 
@@ -29,7 +34,6 @@ Containers should be defined as mosr granulaer as possible with the premise _one
 - _Maintainability_: the mainteiners of the software component should be take into account. If multiple tools comming from multiple teams and developers is added to the same container it makes their mantenability more complex.
 - _User’s acceptability_:  tool container encapsulates domain business process units, so it can be more easily checked and used.
 - _Container Size_: An important factor to define the granularity of a container is the size. Smaller containers are much quicker to download the image from registries and therefore it can be distributed to different machines much quicker. Less code/less programs in the container means less attack surface.
-
 
 ### 2. Versions should be explicit, and consider both the tool version and the container vesion
 
