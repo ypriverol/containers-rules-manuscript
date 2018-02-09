@@ -1,6 +1,17 @@
 #### Title:  Recomendations to packaged and contenarized bioinformatics software
 
-Authors: Yasset Perez-Riverol , Felipe da Veiga Leprevost, Michael R. Crusoe, Rafael C Jimenez, Bjorn Grunning
+Authors: Yasset Perez-Riverol (1), Felipe da Veiga Leprevost (2), Pablo Moreno (1), Hervé Ménager (3),  Olivier Sallou (4),  Dan Søndergaard (5), Michael R. Crusoe (6), Rafael C Jimenez (7), Bjorn Grunning (8)
+
+Affiliation:
+
+(1) EMBL-European Bioinformatics Institute (EMBL-EBI), Hinxton, Cambridge, UK.
+(2) Department of Pathology, University of Michigan, Ann Arbor, Michigan, USA.
+(3) Center of Bioinformatics, Biostatistics and Integrative Biology Institut Pasteur Paris, France.
+(4) Institut de Recherche en Informatique et Systèmes Aléatoires (IRISA/INRIA) - GenOuest platform, Université de Rennes 1, Rennes, France.
+(5) Aarhus University, Bioinformatics Research Centre, C.F. Møllers Allé 8, Aarhus DK-8000, Denmark.
+(6) Microbiology and Molecular Genetics, Michigan State University, East Lansing, MI, USA.
+(7) ELIXIR Hub, Cambridge, CB10 1SD, UK.
+(8) Bioinformatics Group, Department of Computer Science, University of Freiburg, 79110, Freiburg, Germany.
 
 ## Introduction
 
@@ -75,4 +86,4 @@ This file containing the testing logic is not meant to be executed during contai
 When adding software or data in a container, always check their license. A free to use license is not always a free to distribute or copy. License *must* always be explicitly defined in your labels and depending on license, you must also include a copy of the license with the software. Same care must be applied to included data.
 If license is not specified, you should ask upstream author to provide a license.
 
-### 10. Make you package or containerMore findable
+### 10. Make you package or container findable
