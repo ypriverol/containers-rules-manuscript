@@ -5,12 +5,19 @@ Authors: Yasset Perez-Riverol (1), Felipe da Veiga Leprevost (2), Pablo Moreno (
 Affiliation:
 
 (1) EMBL-European Bioinformatics Institute (EMBL-EBI), Hinxton, Cambridge, UK.
+
 (2) Department of Pathology, University of Michigan, Ann Arbor, Michigan, USA.
+
 (3) Center of Bioinformatics, Biostatistics and Integrative Biology Institut Pasteur Paris, France.
+
 (4) Institut de Recherche en Informatique et Systèmes Aléatoires (IRISA/INRIA) - GenOuest platform, Université de Rennes 1, Rennes, France.
+
 (5) Aarhus University, Bioinformatics Research Centre, C.F. Møllers Allé 8, Aarhus DK-8000, Denmark.
+
 (6) Microbiology and Molecular Genetics, Michigan State University, East Lansing, MI, USA.
+
 (7) ELIXIR Hub, Cambridge, CB10 1SD, UK.
+
 (8) Bioinformatics Group, Department of Computer Science, University of Freiburg, 79110, Freiburg, Germany.
 
 ## Introduction
