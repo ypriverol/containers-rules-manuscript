@@ -1,6 +1,6 @@
 #### Title:  Recomendations to packaged and contenarized bioinformatics software
 
-Authors: Yasset Perez-Riverol (1), Felipe da Veiga Leprevost (2), Pablo Moreno (1), Hervé Ménager (3),  Olivier Sallou (4),  Dan Søndergaard (5), Michael R. Crusoe (6), Rafael C Jimenez (7), Bjorn Grunning (8)
+Authors: Yasset Perez-Riverol (1), Felipe da Veiga Leprevost (2), Pablo Moreno (1), Hervé Ménager (3),  Olivier Sallou (4),  Dan Søndergaard (5), Michael R. Crusoe (6), Bjorn Grunning (7), Rafael C Jimenez (8)
 
 Affiliation:
 
@@ -16,9 +16,9 @@ Affiliation:
 
 (6) Microbiology and Molecular Genetics, Michigan State University, East Lansing, MI, USA.
 
-(7) ELIXIR Hub, Cambridge, CB10 1SD, UK.
+(7) Bioinformatics Group, Department of Computer Science, University of Freiburg, 79110, Freiburg, Germany.
 
-(8) Bioinformatics Group, Department of Computer Science, University of Freiburg, 79110, Freiburg, Germany.
+(8) ELIXIR Hub, Cambridge, CB10 1SD, UK.
 
 ## Introduction
 
