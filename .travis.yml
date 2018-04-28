@@ -10,7 +10,7 @@ before_install:
   - docker pull asciidoctor/docker-asciidoctor
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -d book -D /documents/output manuscript.adoc
+  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-html asciidoc-to-pdf asciidoc-to-doc asciidoctor/docker-asciidoctor asciidoctor -d book -D /documents/output manuscript.adoc
 
 after_error: 
   - docker logs asciidoc-to-html
@@ -20,11 +20,14 @@ after_failure:
   - docker logs asciidoc-to-html
   - docker logs asciidoc-to-pdf
 
-after_success:      
+after_success:
+  - git config --global credential.helper store
+  - git config --global user.email "ypriverol@gmail.com"
+  - git config --global user.name "ypriverol"
   - mkdir output/manuscript
   - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
   - mkdir output/manuscript-draft/imgs
   - cp -R $TRAVIS_BUILD_DIR/imgs/* output/manuscript-draft/imgs
   - git add output/*
   - git commit -m "Travis build sucessfull"
-  - git push https://ypriverol:$GITHUB_TOKEN@$github.com/ypriverol/containers-rules-manuscript.git master > /dev/null 2>&1
+  - git push origin master > /dev/null 2>&1
