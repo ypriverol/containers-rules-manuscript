@@ -472,13 +472,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% (<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), while 90% of researchers agree in a reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>). One of the major drawbacks is to be able to reproduce the bioinformatics analysis, including the data processing and statistical downstream analysis (<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Different authors has pointed three main premises for reproducible bioinformatics software deployment: (i) the use of exact versions of software and tools, (ii) open source of the code and all custom software, (iii) adopt a licence and comply with the licence of third-party dependencies (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Most of these works has been focussed in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
 </div>
 <div class="paragraph">
-<p>However, even if source code and data are published in a public repository (e.g Github) alongside the paper as open source artifacts, they come with many dependencies, configurations, versions that make their use hard to achieve [DOI:10.1145/2723872.2723882]. The build, installation and deployment of the bioinformatics solution (e.g. software or workflow) often requires internal knowledge that is missing from the published manuscript. In addition, most of the bioinformatics software is developed by different teams but used in combination with workflows, scripts or pipelines. This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies; running serial and parallel processes; and working with a broad variety of software data types and user-defined parameters.</p>
+<p>However, even if source code and data are published in a public repository (e.g Github) alongside the paper as open source artifacts, they come with many dependencies, configurations, versions that make their use hard to achieve (<a href="#bibliography-default-Boettiger:2015:IDR:2723872.2723882">Boettiger, 2015</a>). The build, installation and deployment of the bioinformatics solution (e.g. software or workflow) often requires internal knowledge that is missing from the published manuscript. In addition, most of the bioinformatics software is developed by different teams but used in combination with workflows, scripts or pipelines. This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies; running serial and parallel processes; and working with a broad variety of software data types and user-defined parameters.</p>
 </div>
 <div class="paragraph">
-<p>Software containers has emerged as a powerful technology to document, distribute, and deploy bioinformatics software and workflows [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28379341">28379341</a>]. Containers are lightweight software components and libraries easily packaged designed to run anywhere [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28379341">28379341</a>], thus useful to leverage bioinformatics software reproducibility. Conda packages, Docker and Singularity are containers technologies applicable to the field of bioinformatics. The BioContainers and BioConda communities have released more than 3000 public containers [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28379341">28379341</a>] facilitating the development of complex and reproducible workflows and pipelines [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28559010">28559010</a>, PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27137889">27137889</a>].</p>
+<p>Software containers has emerged as a powerful technology to document, distribute, and deploy bioinformatics software and workflows (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). Containers are lightweight software components and libraries easily packaged designed to run anywhere (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), thus useful to leverage bioinformatics software reproducibility. Conda packages, Docker and Singularity are containers technologies applicable to the field of bioinformatics. By May 2018, the BioContainers and BioConda communities have released more than 4000 public containers facilitating the development of complex and reproducible workflows and pipelines (<a href="#bibliography-default-pmid27137889">Afgan et al., 2016</a>; <a href="#bibliography-default-pmid28559010">Pfeuffer et al., 2017</a>).</p>
 </div>
 <div class="paragraph">
-<p>This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software packages and containers. It provides easy-to-implement recommendations that encourage adoption of packaging (e.g. conda) or containers (e.g. docker, singularity) technologies in bioinformatics and software development for research. It provides recomendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software.</p>
+<p>This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software packages and containers. It provides easy-to-implement recommendations that encourage adoption of packaging (e.g. conda) or containers (e.g. docker, singularity) technologies in bioinformatics and software development for research. It provides recommendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software.</p>
 </div>
 <div class="paragraph">
 <p>In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).</p>
@@ -587,7 +587,16 @@ If license is not specified, you should ask upstream author to provide a license
 <div class="sect2">
 <h3 id="_references">References</h3>
 <div class="paragraph">
+<p><a id="bibliography-default-pmid27137889"></a>Afgan, E., Baker, D., van den Beek, M., Blankenberg, D., Bouvier, D., ?ech, M., … Goecks, J. (2016). The Galaxy platform for accessible, reproducible and collaborative biomedical analyses: 2016 update. <em>Nucleic Acids Res.</em>, <em>44</em>(W1), W3–W10.</p>
+</div>
+<div class="paragraph">
 <p><a id="bibliography-default-pmid27225100"></a>Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. <em>Nature</em>, <em>533</em>(7604), 452–454.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-Boettiger:2015:IDR:2723872.2723882"></a>Boettiger, C. (2015). An Introduction to Docker for Reproducible Research. <em>SIGOPS Oper. Syst. Rev.</em>, <em>49</em>(1), 71–79. <a href="https://doi.org/10.1145/2723872.2723882" class="bare">https://doi.org/10.1145/2723872.2723882</a></p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid28379341"></a>da Veiga Leprevost, F., Gruning, B. A., Alves Aflitos, S., Rost, H. L., Uszkoreit, J., Barsnes, H., … Perez-Riverol, Y. (2017). BioContainers: an open-source and community-driven framework for software standardization. <em>Bioinformatics</em>, <em>33</em>(16), 2580–2582.</p>
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-pmid28751965"></a>Jimenez, R. C., Kuzak, M., Alhamdoosh, M., Barker, M., Batut, B., Borg, M., … Crouch, S. (2017). Four simple recommendations to encourage best practices in research software. <em>F1000Res</em>, <em>6</em>.</p>
@@ -599,6 +608,9 @@ If license is not specified, you should ask upstream author to provide a license
 <p><a id="bibliography-default-pmid27415786"></a>Perez-Riverol, Y., Gatto, L., Wang, R., Sachsenberg, T., Uszkoreit, J., Leprevost, F. d. a. V., … Vizcaino, J. A. (2016). Ten Simple Rules for Taking Advantage of Git and GitHub. <em>PLoS Comput. Biol.</em>, <em>12</em>(7), e1004947.</p>
 </div>
 <div class="paragraph">
+<p><a id="bibliography-default-pmid28559010"></a>Pfeuffer, J., Sachsenberg, T., Alka, O., Walzer, M., Fillbrunn, A., Nilse, L., … Kohlbacher, O. (2017). OpenMS - A platform for reproducible analysis of mass spectrometry data. <em>J. Biotechnol.</em>, <em>261</em>, 142–148.</p>
+</div>
+<div class="paragraph">
 <p><a id="bibliography-default-pmid24204232"></a>Sandve, G. K., Nekrutenko, A., Taylor, J., &amp; Hovig, E. (2013). Ten simple rules for reproducible computational research. <em>PLoS Comput. Biol.</em>, <em>9</em>(10), e1003285.</p>
 </div>
 </div>
@@ -607,7 +619,7 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-28 15:09:23 UTC
+Last updated 2018-04-28 15:20:10 UTC
 </div>
 </div>
 </body>
