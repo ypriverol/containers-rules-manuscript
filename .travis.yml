@@ -24,7 +24,7 @@ after_success:
   - git config --global credential.helper store
   - git config --global user.email "ypriverol@gmail.com"
   - git config --global user.name "ypriverol"
-  - mkdir output/manuscript
+  - mkdir output/manuscript-draft
   - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
   - mkdir output/manuscript-draft/imgs
   - cp -R $TRAVIS_BUILD_DIR/imgs/* output/manuscript-draft/imgs
