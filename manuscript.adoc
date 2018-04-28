@@ -55,6 +55,48 @@ A software package is self-contained software including all the dependencies lib
 
 Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes[https://github.com/bioconda/bioconda-recipes]) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see *Recomendation X*). Each package added to Bioconda is also made available as a Docker container via Quay.io and displayed in the BioContainers registry cite:[pmid28379341]. The BioContainers registry displays Docker containers as well as containers from other technologies such as rkt and Singularity cite:[pmid28494014] making easier to find a discover packages and related containers.
 
+**************************
+{% set name = "" %}
+{% set version = "" %}
+
+package:
+  name: abawaca
+  version:1.00
+
+source:
+  fn: abawaca-1.00.tar.gz
+  url: https://github.com/CK7/abawaca/archive/v{{ version }}.tar.gz
+  sha256: 57465bb291c3a9af93605ffb11d704324079036205e5ac279601c9e98c467529
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - gcc   # [not osx]
+    - llvm  # [osx]
+
+  run:
+    - libgcc    # [not osx]
+
+test:
+  commands:
+    - abawaca 2>&1 | grep Usage
+
+about:
+  home: 'https://github.com/CK7/abawaca'
+  license: "open source"
+  summary: "abawaca is a binning program for metagenomics"
+
+extra:
+  maintainers:
+    - keuv-grvl
+  identifiers:
+    - doi:10.1038/nature14486
+**************************
+
+Box 1: BioConda Recipe
+
 == 3. Versions should be explicit, and consider both the tool version and the container version
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool changes but the container, should be versioned through semantic versioning to signal its backward compatibility.
