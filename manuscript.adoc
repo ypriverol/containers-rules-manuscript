@@ -1,5 +1,5 @@
-==== Title: Recommendations to packaged and contenarized bioinformatics software
-:bibliography-database: manuscript.bib
+= Recommendations to packaged and contenarized bioinformatics software
+:bibliography-database: manuscript.bibtex
 :bibliography-style: apa
 
 Authors: Yasset Perez-Riverol (1), Felipe da Veiga Leprevost (2), Pablo Moreno (1), Hervé Ménager (3), Olivier Sallou (4), Dan Søndergaard (5), Michael R. Crusoe (6), Bjorn Grunning (7), Rafael C Jimenez (8)
@@ -25,7 +25,7 @@ Affiliation:
 == Introduction
 
 The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges
-in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% cite:[pmid24411643], while 90% of researchers agree in a reproducibility crisis [PMID: https://www.ncbi.nlm.nih.gov/pubmed/27225100[27225100]]. One of the major drawbacks is to be able to reproduce the bioinformatics analysis, including the data processing and statistical downstream analysis [PMID: https://www.ncbi.nlm.nih.gov/pubmed/24204232[24204232]]. Different authors has pointed three main premises for reproducible bioinformatics software deployment: (i) the use of exact versions of software and tools, (ii) open source of the code and all custom software, (iii) adopt a licence and comply with the licence of third-party dependencies [PMID: https://www.ncbi.nlm.nih.gov/pubmed/24204232[24204232], https://www.ncbi.nlm.nih.gov/pubmed/28751965[28751965]]. Most of these works has been focussed in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis [PMID: https://www.ncbi.nlm.nih.gov/pubmed/24204232[24204232], https://www.ncbi.nlm.nih.gov/pubmed/27415786[27415786]].
+in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% cite:[pmid24411643], while 90% of researchers agree in a reproducibility crisis cite:[pmid27225100]. One of the major drawbacks is to be able to reproduce the bioinformatics analysis, including the data processing and statistical downstream analysis cite:[pmid24204232]. Different authors has pointed three main premises for reproducible bioinformatics software deployment: (i) the use of exact versions of software and tools, (ii) open source of the code and all custom software, (iii) adopt a licence and comply with the licence of third-party dependencies cite:[pmid28751965]+[pmid24204232]. Most of these works has been focussed in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis cite:[pmid24204232]+[pmid27415786].
 
 However, even if source code and data are published in a public repository (e.g Github) alongside the paper as open source artifacts, they come with many dependencies, configurations, versions that make their use hard to achieve [DOI:10.1145/2723872.2723882]. The build, installation and deployment of the bioinformatics solution (e.g. software or workflow) often requires internal knowledge that is missing from the published manuscript. In addition, most of the bioinformatics software is developed by different teams but used in combination with workflows, scripts or pipelines. This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies; running serial and parallel processes; and working with a broad variety of software data types and user-defined parameters.
 
@@ -96,5 +96,6 @@ If license is not specified, you should ask upstream author to provide a license
 
 === 10. Make you package or container findable
 
+=== References
 
 bibliography::[]
