@@ -64,6 +64,8 @@ If a copy is done via a git clone or equivalent, a specific tagged version shoul
 
 == 4. Eschew ENTRYPOINT
 
+Is a well-known feature of Docker that the entry-point of the container can be over-write by definition (e.g, ENTRYPOINT ["/bin/ping"]). The **ENTRYPOINT** specifies a command that will always be executed when the container starts. Even when the ENTRYPOINT helps the user get _default_ behaviour for the tool, it is not well-recommended for reproducibility efforts of the original results or workflow. By specifinying the name of the tool in the container (not ENTRYPOINT) the user (e.g. workflow) recognize and trace which tool is used within the container.
+
 == 5. Relevant tools and software should be executable and in the path
 
 If for some reason the container needs to expose more than a single executable or script (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the container's default path. This will be mostly always the case by default for everything that is installed via a package manager (apt-get, pip, R install.package, etc.) and you won't need to worry if that is the case, but if you are adding tailored made scripts or others that are not installed through a manager, then you need to take care of this. This will facilitate the use of the container as an environment or to specify alternative commands to the main entrypoint easily.
