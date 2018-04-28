@@ -56,6 +56,7 @@ A software package is self-contained software including all the dependencies lib
 Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes[https://github.com/bioconda/bioconda-recipes]) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see *Recomendation X*). Each package added to Bioconda is also made available as a Docker container via Quay.io and displayed in the BioContainers registry cite:[pmid28379341]. The BioContainers registry displays Docker containers as well as containers from other technologies such as rkt and Singularity cite:[pmid28494014] making easier to find a discover packages and related containers.
 
 **************************
+
 package:
   name: abawaca
   version:1.00
@@ -96,7 +97,55 @@ Box 1: BioConda Recipe
 
 == 3. Versions should be explicit, and consider both the tool version and the container version
 
-The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool changes but the container, should be versioned through semantic versioning to signal its backward compatibility.
+The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used (**Box 2**). The version used for this main software should be included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool changes but the container, should be versioned through semantic versioning to signal its backward compatibility.
+
+**************************
+FROM biocontainers/biocontainers:latest
+
+LABEL base_image="biocontainers:latest"
+
+LABEL version="3"
+
+LABEL software="Comet"
+
+LABEL software.version="2016012"
+
+LABEL about.summary="an open source tandem mass spectrometry sequence database search tool"
+
+LABEL about.home="http://comet-ms.sourceforge.net/"
+
+LABEL about.documentation="http://comet-ms.sourceforge.net/parameters/parameters_2016010/"
+
+LABEL about.license_file="http://comet-ms.sourceforge.net/"
+
+LABEL about.license="SPDX:Apache-2.0"
+
+LABEL extra.identifiers.biotools="comet"
+
+LABEL about.tags="Proteomics"
+
+################## MAINTAINER ######################
+
+MAINTAINER Felipe da Veiga Leprevost <felipe@leprevost.com.br>
+
+################## INSTALLATION ######################
+
+USER biodocker
+
+RUN ZIP=comet_binaries_2016012.zip && \
+  wget https://github.com/BioDocker/software-archive/releases/download/Comet/$ZIP -O /tmp/$ZIP && \
+  unzip /tmp/$ZIP -d /home/biodocker/bin/Comet/ && \
+  chmod -R 755 /home/biodocker/bin/Comet/* && \
+  rm /tmp/$ZIP
+
+RUN mv /home/biodocker/bin/Comet/comet_binaries_2016012/comet.2016012.linux.exe /home/biodocker/bin/Comet/comet
+
+ENV PATH /home/biodocker/bin/Comet:$PATH
+
+WORKDIR /data/
+**************************
+
+Box 2: BioContainers recipe for comet software. The metadata container the license of the software.
 
 If a copy is done via a git clone or equivalent, a specific tagged version should be copied, never the _latest_ branch. Cloning the latest branch will copy the latest code making difficult to reproduce an operation since the latest branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case, the HEAD commit id of the clone should be used as the tool version for the container.
 
