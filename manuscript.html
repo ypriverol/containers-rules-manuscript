@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Title: Recomendations to packaged and contenarized bioinformatics software</title>
+<title>Recommendations to packaged and contenarized bioinformatics software</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -427,10 +427,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book">
 <div id="header">
+<h1>Recommendations to packaged and contenarized bioinformatics software</h1>
 </div>
 <div id="content">
-<div class="sect3">
-<h4 id="_title_recomendations_to_packaged_and_contenarized_bioinformatics_software">Title: Recomendations to packaged and contenarized bioinformatics software</h4>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>Authors: Yasset Perez-Riverol (1), Felipe da Veiga Leprevost (2), Pablo Moreno (1), Hervé Ménager (3), Olivier Sallou (4), Dan Søndergaard (5), Michael R. Crusoe (6), Bjorn Grunning (7), Rafael C Jimenez (8)</p>
 </div>
@@ -462,12 +463,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>(8) ELIXIR Hub, Cambridge, CB10 1SD, UK.</p>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges
-in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24411643">24411643</a>], while 90% of researchers agree in a reproducibility crisis [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27225100">27225100</a>]. One of the major drawbacks is to be able to reproduce the bioinformatics analysis, including the data processing and statistical downstream analysis [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24204232">24204232</a>]. Different authors has pointed three main premises for reproducible bioinformatics software deployment: (i) the use of exact versions of software and tools, (ii) open source of the code and all custom software, (iii) adopt a licence and comply with the licence of third-party dependencies [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24204232">24204232</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/28751965">28751965</a>]. Most of these works has been focussed in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/24204232">24204232</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/27415786">27415786</a>].</p>
+in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% (<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), while 90% of researchers agree in a reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>). One of the major drawbacks is to be able to reproduce the bioinformatics analysis, including the data processing and statistical downstream analysis (<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Different authors has pointed three main premises for reproducible bioinformatics software deployment: (i) the use of exact versions of software and tools, (ii) open source of the code and all custom software, (iii) adopt a licence and comply with the licence of third-party dependencies (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Most of these works has been focussed in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
 </div>
 <div class="paragraph">
 <p>However, even if source code and data are published in a public repository (e.g Github) alongside the paper as open source artifacts, they come with many dependencies, configurations, versions that make their use hard to achieve [DOI:10.1145/2723872.2723882]. The build, installation and deployment of the bioinformatics solution (e.g. software or workflow) often requires internal knowledge that is missing from the published manuscript. In addition, most of the bioinformatics software is developed by different teams but used in combination with workflows, scripts or pipelines. This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies; running serial and parallel processes; and working with a broad variety of software data types and user-defined parameters.</p>
@@ -582,12 +584,30 @@ If license is not specified, you should ask upstream author to provide a license
 <h3 id="_10_make_you_package_or_container_findable">10. Make you package or container findable</h3>
 
 </div>
+<div class="sect2">
+<h3 id="_references">References</h3>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid27225100"></a>Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. <em>Nature</em>, <em>533</em>(7604), 452–454.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid28751965"></a>Jimenez, R. C., Kuzak, M., Alhamdoosh, M., Barker, M., Batut, B., Borg, M., … Crouch, S. (2017). Four simple recommendations to encourage best practices in research software. <em>F1000Res</em>, <em>6</em>.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid24411643"></a>Macleod, M. R., Michie, S., Roberts, I., Dirnagl, U., Chalmers, I., Ioannidis, J. P., … Glasziou, P. (2014). Biomedical research: increasing value, reducing waste. <em>Lancet</em>, <em>383</em>(9912), 101–104.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid27415786"></a>Perez-Riverol, Y., Gatto, L., Wang, R., Sachsenberg, T., Uszkoreit, J., Leprevost, F. d. a. V., … Vizcaino, J. A. (2016). Ten Simple Rules for Taking Advantage of Git and GitHub. <em>PLoS Comput. Biol.</em>, <em>12</em>(7), e1004947.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid24204232"></a>Sandve, G. K., Nekrutenko, A., Taylor, J., &amp; Hovig, E. (2013). Ten simple rules for reproducible computational research. <em>PLoS Comput. Biol.</em>, <em>9</em>(10), e1003285.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-28 13:50:15 UTC
+Last updated 2018-04-28 15:09:23 UTC
 </div>
 </div>
 </body>
