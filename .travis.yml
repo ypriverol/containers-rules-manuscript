@@ -1,22 +1,36 @@
-#!/usr/bin/env bash
+sudo: required
 
-for i in *.docx;
-do
-  echo "Transforming to asciidoc:"
-  fname=${i%.*}
-  echo -e "  Input file: $i"
-  echo -e "  Output file: $fname"
-  pandoc --from=docx --wrap=none --atx-headers --normalize -s -S $i -t asciidoc --extract-media=img/ -o "$fname.adoc"
-  echo "Transformation done!"
-done
-for i in *.adoc;
-do
-  echo "Tidying adoc file $i"
-  # Remove Word's extraneous Toc entries
-  sed -i -r -e "s/\[\[_Toc[0-9]+\]\]//g" $i;
-  # Remove Word's extaneous Ref entries
-  sed -i -r -e "s/\[\[_Ref[0-9]+\]\]//g" $i;
-  # Remove long horizontal lines in toc
-  sed -i -r -e "s/[_]{2,}$//g" $i
-done
-echo "Done!"
+install: false
+
+services:
+  - docker                  
+
+before_install:            
+  - mkdir -p output
+  - docker pull asciidoctor/docker-asciidoctor
+
+script:
+  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -d book -D /documents/output manuscript.adoc
+
+after_error: 
+  - docker logs asciidoc-to-html
+  - docker logs asciidoc-to-pdf
+
+after_failure:
+  - docker logs asciidoc-to-html
+  - docker logs asciidoc-to-pdf
+
+after_success:      
+  - mkdir output/manuscript
+  - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
+  - mkdir output/1_1-metabolomics-draft/img
+  - cp -R $TRAVIS_BUILD_DIR/img/* output/manuscript-draft/img
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: output
+  keep-history: true
+  on:
+    branch: master
