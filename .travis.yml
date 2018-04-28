@@ -21,13 +21,12 @@ after_failure:
   - docker logs asciidoc-to-pdf
 
 after_success:
-  - git config --global credential.helper store
   - git config --global user.email "ypriverol@gmail.com"
   - git config --global user.name "ypriverol"
-  - mkdir output/manuscript-draft
-  - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
-  - mkdir output/manuscript-draft/imgs
-  - cp -R $TRAVIS_BUILD_DIR/imgs/* output/manuscript-draft/imgs
-  - git add output/*
+  - mkdir manuscript-draft
+  - cp -R $TRAVIS_BUILD_DIR/output/* manuscript-draft/
+  - mkdir manuscript-draft/imgs
+  - cp -R $TRAVIS_BUILD_DIR/imgs/* manuscript-draft/imgs
+  - git add manuscript-draft/*
   - git commit -m "Travis build sucessfull"
-  - git push origin master > /dev/null 2>&1
+  - git push https://ypriverol:$TRAVIS_SECURE_TOKEN_NAME@github.com/ypriverol/container-rules-manuscript.git master
