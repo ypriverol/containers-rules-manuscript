@@ -546,7 +546,9 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <div class="sect1">
 <h2 id="_4_eschew_entrypoint">4. Eschew ENTRYPOINT</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Is a well-known feature of Docker that the entry-point of the container can be over-write by definition (e.g, ENTRYPOINT ["/bin/ping"]). The <strong>ENTRYPOINT</strong> specifies a command that will always be executed when the container starts. Even when the ENTRYPOINT helps the user get <em>default</em> behaviour for the tool, it is not well-recommended for reproducibility efforts of the original results or workflow. By specifinying the name of the tool in the container (not ENTRYPOINT) the user (e.g. workflow) recognize and trace which tool is used within the container.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -603,7 +605,30 @@ If license is not specified, you should ask upstream author to provide a license
 <div class="sect1">
 <h2 id="_10_make_you_package_or_container_findable">10. Make you package or container findable</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more Findable, Accessible, Interoperable, and Reusable (FAIR Principles) (<a href="#bibliography-default-pmid26978244">Wilkinson et al., 2016</a>). Leveraging those principles, we recommend to the bioinformatics community and software developers to make their containers and package more findable. In order to make your package available we recommend the following steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Annotate your package or container with some metadata that allows users (e.g. biologiests, bioinformatians) to find them.</p>
+</li>
+<li>
+<p>Make your package/container available. We recommend that as a developer you should make the recipe of how to build your containers available for others, including i) the source code or binaries of the original tools; ii) configuration settings and test data.</p>
+</li>
+<li>
+<p>Register your package/container with some of the existing bioinformatics intitiatives such as BioContainers (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), bio.tools (<a href="#bibliography-default-pmid26538599">Ison et al., 2016</a>) or BioConda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>). Al these resources are fully connected and exchange metadata and information using different APIs and a common identifier system.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusions">Conclusions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are involved in scientific research and have not containers or software packages  before, we recommend that you explore its potential as soon as possible (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). As with many tools, a learning curve lays ahead, but several basic yet powerful features are accessible even to the beginner and may be applied to many different use-cases. To conclude, we would like to recommend some examples of bioinformatics containers in Biocontainers (Table 1) and some useful training materials, including workshops, online courses, and manuscripts (Table 2).</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -619,10 +644,16 @@ If license is not specified, you should ask upstream author to provide a license
 <p><a id="bibliography-default-7436659"></a>Balalaie, A., Heydarnoori, A., &amp; Jamshidi, P. (2016). Microservices Architecture Enables DevOps: Migration to a Cloud-Native Architecture. <em>IEEE Software</em>, <em>33</em>(3), 42–52. <a href="https://doi.org/10.1109/MS.2016.64" class="bare">https://doi.org/10.1109/MS.2016.64</a></p>
 </div>
 <div class="paragraph">
+<p><a id="bibliography-default-207092"></a>Bioconda: A sustainable and comprehensive software distribution for the life sciences. (2017). <em>BioRxiv</em>. <a href="https://doi.org/10.1101/207092" class="bare">https://doi.org/10.1101/207092</a></p>
+</div>
+<div class="paragraph">
 <p><a id="bibliography-default-Boettiger:2015:IDR:2723872.2723882"></a>Boettiger, C. (2015). An Introduction to Docker for Reproducible Research. <em>SIGOPS Oper. Syst. Rev.</em>, <em>49</em>(1), 71–79. <a href="https://doi.org/10.1145/2723872.2723882" class="bare">https://doi.org/10.1145/2723872.2723882</a></p>
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-pmid28379341"></a>da Veiga Leprevost, F., Gruning, B. A., Alves Aflitos, S., Rost, H. L., Uszkoreit, J., Barsnes, H., … Perez-Riverol, Y. (2017). BioContainers: an open-source and community-driven framework for software standardization. <em>Bioinformatics</em>, <em>33</em>(16), 2580–2582.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid26538599"></a>Ison, J., Rapacki, K., Menager, H., Kala?, M., Rydza, E., Chmura, P., … Brunak, S. (2016). Tools and data services registry: a community effort to document bioinformatics resources. <em>Nucleic Acids Res.</em>, <em>44</em>(D1), 38–47.</p>
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-pmid28751965"></a>Jimenez, R. C., Kuzak, M., Alhamdoosh, M., Barker, M., Batut, B., Borg, M., … Crouch, S. (2017). Four simple recommendations to encourage best practices in research software. <em>F1000Res</em>, <em>6</em>.</p>
@@ -642,12 +673,15 @@ If license is not specified, you should ask upstream author to provide a license
 <div class="paragraph">
 <p><a id="bibliography-default-pmid24204232"></a>Sandve, G. K., Nekrutenko, A., Taylor, J., &amp; Hovig, E. (2013). Ten simple rules for reproducible computational research. <em>PLoS Comput. Biol.</em>, <em>9</em>(10), e1003285.</p>
 </div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid26978244"></a>Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., … Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. <em>Sci Data</em>, <em>3</em>, 160018.</p>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-28 15:28:59 UTC
+Last updated 2018-04-28 16:37:04 UTC
 </div>
 </div>
 </body>
