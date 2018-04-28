@@ -56,9 +56,6 @@ A software package is self-contained software including all the dependencies lib
 Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes[https://github.com/bioconda/bioconda-recipes]) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see *Recomendation X*). Each package added to Bioconda is also made available as a Docker container via Quay.io and displayed in the BioContainers registry cite:[pmid28379341]. The BioContainers registry displays Docker containers as well as containers from other technologies such as rkt and Singularity cite:[pmid28494014] making easier to find a discover packages and related containers.
 
 **************************
-{% set name = "" %}
-{% set version = "" %}
-
 package:
   name: abawaca
   version:1.00
