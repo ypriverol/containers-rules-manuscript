@@ -483,10 +483,13 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <div class="paragraph">
 <p>In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).</p>
 </div>
-<div class="sect2">
-<h3 id="_1_one_tool_one_container">1. One tool, one container.</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_one_tool_one_container">1. One tool, one container.</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Microservice and modular architectures [DOI: 10.1109/MS.2016.64] is a way of breaking large software projects into smaller, independent, and loosely coupled modules. This software applications can be seen as a suite of independently deployable, small, modular components in which each tool runs a <strong>unique</strong> process and communicates through a well-defined, lightweight mechanism to serve a business goal [DOI: 10.4103/2153-3539.194835]. Each of these independent modules are referred to as a <em>container</em>. A container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating system components (e.g. dependencies) required for execution [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28379341">28379341</a>].</p>
+<p>Microservice and modular architectures (<a href="#bibliography-default-7436659">Balalaie, Heydarnoori, &amp; Jamshidi, 2016</a>) is a way of breaking large software projects into smaller, independent, and loosely coupled modules. This software applications can be seen as a suite of independently deployable, small, modular components in which each tool runs a <strong>unique</strong> process and communicates through a well-defined, lightweight mechanism to serve a business goal (<a href="#bibliography-default-7436659">Balalaie, Heydarnoori, &amp; Jamshidi, 2016</a>). Each of these independent modules are referred to as a <em>container</em>. A container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating system components (e.g. dependencies) required for execution (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>).</p>
 </div>
 <div class="paragraph">
 <p>Containers should be defined as most granular as possible with the premise <em>one Tool, one Container</em>. Each container should encapsulate only one piece of software, tool that perform a unique task with a well-defined goal (e.g. sequence aligner, mass spectra identification). In order to design the level of <em>granularity</em>, different metrics should be considered:</p>
@@ -517,17 +520,21 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_2_a_package_first">2. A package first</h3>
+</div>
+<div class="sect1">
+<h2 id="_2_a_package_first">2. A package first</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>A software package is self-contained software including all the dependencies libraries and packages necesary to excecute the software. Some of the most popular and well-known packaging distribution system are homebrew (<a href="https://brew.sh/">https://brew.sh/</a>) or conda (<a href="https://conda.io/)">https://conda.io/)</a>. <em>Conda</em>, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies for many languages such as C, C++, R, Java and of course Python tools. In addition, <em>Conda</em> has joined to other popular packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of installing from a pre-built binary. The field of computational biology has built an strong community (<a href="https://bioconda.github.io/)">https://bioconda.github.io/)</a>.</p>
 </div>
 <div class="paragraph">
-<p>Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a <em>Conda</em> package by defining a <em>BioConda</em> recipe (<strong>Box 1</strong>). This recipe (<a href="https://github.com/bioconda/bioconda-recipes">https://github.com/bioconda/bioconda-recipes</a>) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see <strong>Recomendation X</strong>). Each package added to Bioconda is also made available as a Docker container via Quay.io and displayed in the BioContainers registry [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28379341">28379341</a>]. The BioContainers registry displays Docker containers as well as containers from other technologies such as rkt and Singularity [PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28494014">28494014</a>] making easier to find a discover packages and related containers.</p>
+<p>Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a <em>Conda</em> package by defining a <em>BioConda</em> recipe (<strong>Box 1</strong>). This recipe (<a href="https://github.com/bioconda/bioconda-recipes">https://github.com/bioconda/bioconda-recipes</a>) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see <strong>Recomendation X</strong>). Each package added to Bioconda is also made available as a Docker container via Quay.io and displayed in the BioContainers registry (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). The BioContainers registry displays Docker containers as well as containers from other technologies such as rkt and Singularity (<a href="#bibliography-default-pmid28494014">Kurtzer, Sochat, &amp; Bauer, 2017</a>) making easier to find a discover packages and related containers.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_versions_should_be_explicit_and_consider_both_the_tool_version_and_the_container_version">3. Versions should be explicit, and consider both the tool version and the container version</h3>
+</div>
+<div class="sect1">
+<h2 id="_3_versions_should_be_explicit_and_consider_both_the_tool_version_and_the_container_version">3. Versions should be explicit, and consider both the tool version and the container version</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like <code>&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;</code>. The container version, which does not track the tool changes but the container, should be versioned through semantic versioning to signal its backward compatibility.</p>
 </div>
@@ -535,18 +542,24 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <p>If a copy is done via a git clone or equivalent, a specific tagged version should be copied, never the <em>latest</em> branch. Cloning the latest branch will copy the latest code making difficult to reproduce an operation since the latest branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case, the HEAD commit id of the clone should be used as the tool version for the container.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_4_eschew_entrypoint">4. Eschew ENTRYPOINT</h3>
+</div>
+<div class="sect1">
+<h2 id="_4_eschew_entrypoint">4. Eschew ENTRYPOINT</h2>
+<div class="sectionbody">
 
 </div>
-<div class="sect2">
-<h3 id="_5_relevant_tools_and_software_should_be_executable_and_in_the_path">5. Relevant tools and software should be executable and in the path</h3>
+</div>
+<div class="sect1">
+<h2 id="_5_relevant_tools_and_software_should_be_executable_and_in_the_path">5. Relevant tools and software should be executable and in the path</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>If for some reason the container needs to expose more than a single executable or script (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the container&#8217;s default path. This will be mostly always the case by default for everything that is installed via a package manager (apt-get, pip, R install.package, etc.) and you won&#8217;t need to worry if that is the case, but if you are adding tailored made scripts or others that are not installed through a manager, then you need to take care of this. This will facilitate the use of the container as an environment or to specify alternative commands to the main entrypoint easily.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_6_reduce_the_size_of_your_container_as_much_as_possible">6. Reduce the size of your container as much as possible</h3>
+</div>
+<div class="sect1">
+<h2 id="_6_reduce_the_size_of_your_container_as_much_as_possible">6. Reduce the size of your container as much as possible</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Since containers are being constantly being pushed and pulled over the internet, their size matters. There are many tips to reduce the size of your container in build time:
 - Avoid installing "recommended" packages in apt based systems.
@@ -556,14 +569,18 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 - If installing or cloning from a git repo, use shallow clones, which for large repos will save a lot of space.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_7_choose_a_base_image_wisely">7. Choose a base image wisely.</h3>
+</div>
+<div class="sect1">
+<h2 id="_7_choose_a_base_image_wisely">7. Choose a base image wisely.</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>One of the decisions that will most likely impact on your final container image size will be your base image. If you can, start with a lightweight base image such as Alpine or similar, always at a fixed version. If installing your software on top of such a minimal operating system doesn&#8217;t work out well, only then move to a larger, stock-image where installation of your tool software might be simpler (such as Ubuntu). Preferring stock images means that many other people will be using them and that your container will be pulled faster as shared layers are more likely. Always aim to have predefined images from where you choose (always the same Alpine version as first choice and always the same Ubuntu version as second choice), so that most of your containers share that base image.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_8_add_some_testing_logic">8. Add some testing logic</h3>
+</div>
+<div class="sect1">
+<h2 id="_8_add_some_testing_logic">8. Add some testing logic</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>If others want to build locally your container, want to rebuild it later on with an updated base image, want to integrate it to a continuous integration system for building it or for many other reasons, users might want to test that the built container still serves the function for which it was originally designed. For this is useful to add to the container some testing logic inside it (in the form of a bash script for instance) in a standard location (here we propose a file called <code>runTest.sh</code>, executable and in the path) which includes all the logic for:
 - Installing any packages that might be needed for testing, such as wget for instance to retrieve example files for the run.
@@ -573,24 +590,33 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 This file containing the testing logic is not meant to be executed during container buildtime, so the retrieved data/packages don&#8217;t increase the size of the container when this is executed once the container is built. This means that, because the file is inside the container, any user who has built the container or downloaded the container image can check that the container is working adequately by executing <code>runTest.sh</code> through the container.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_9_check_the_license_of_the_software">9. Check the license of the software</h3>
+</div>
+<div class="sect1">
+<h2 id="_9_check_the_license_of_the_software">9. Check the license of the software</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>When adding software or data in a container, always check their license. A free to use license is not always a free to distribute or copy. License <em>must</em> always be explicitly defined in your labels and depending on license, you must also include a copy of the license with the software. Same care must be applied to included data.
 If license is not specified, you should ask upstream author to provide a license.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_10_make_you_package_or_container_findable">10. Make you package or container findable</h3>
+</div>
+<div class="sect1">
+<h2 id="_10_make_you_package_or_container_findable">10. Make you package or container findable</h2>
+<div class="sectionbody">
 
 </div>
-<div class="sect2">
-<h3 id="_references">References</h3>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><a id="bibliography-default-pmid27137889"></a>Afgan, E., Baker, D., van den Beek, M., Blankenberg, D., Bouvier, D., ?ech, M., … Goecks, J. (2016). The Galaxy platform for accessible, reproducible and collaborative biomedical analyses: 2016 update. <em>Nucleic Acids Res.</em>, <em>44</em>(W1), W3–W10.</p>
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-pmid27225100"></a>Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. <em>Nature</em>, <em>533</em>(7604), 452–454.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-7436659"></a>Balalaie, A., Heydarnoori, A., &amp; Jamshidi, P. (2016). Microservices Architecture Enables DevOps: Migration to a Cloud-Native Architecture. <em>IEEE Software</em>, <em>33</em>(3), 42–52. <a href="https://doi.org/10.1109/MS.2016.64" class="bare">https://doi.org/10.1109/MS.2016.64</a></p>
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-Boettiger:2015:IDR:2723872.2723882"></a>Boettiger, C. (2015). An Introduction to Docker for Reproducible Research. <em>SIGOPS Oper. Syst. Rev.</em>, <em>49</em>(1), 71–79. <a href="https://doi.org/10.1145/2723872.2723882" class="bare">https://doi.org/10.1145/2723872.2723882</a></p>
@@ -600,6 +626,9 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-pmid28751965"></a>Jimenez, R. C., Kuzak, M., Alhamdoosh, M., Barker, M., Batut, B., Borg, M., … Crouch, S. (2017). Four simple recommendations to encourage best practices in research software. <em>F1000Res</em>, <em>6</em>.</p>
+</div>
+<div class="paragraph">
+<p><a id="bibliography-default-pmid28494014"></a>Kurtzer, G. M., Sochat, V., &amp; Bauer, M. W. (2017). Singularity: Scientific containers for mobility of compute. <em>PLoS ONE</em>, <em>12</em>(5), e0177459.</p>
 </div>
 <div class="paragraph">
 <p><a id="bibliography-default-pmid24411643"></a>Macleod, M. R., Michie, S., Roberts, I., Dirnagl, U., Chalmers, I., Ioannidis, J. P., … Glasziou, P. (2014). Biomedical research: increasing value, reducing waste. <em>Lancet</em>, <em>383</em>(9912), 101–104.</p>
@@ -616,10 +645,9 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 </div>
 </div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-28 15:20:10 UTC
+Last updated 2018-04-28 15:27:25 UTC
 </div>
 </div>
 </body>
