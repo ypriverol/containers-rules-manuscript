@@ -25,8 +25,8 @@ after_success:
   - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
   - mkdir output/manuscript-draft/img
   - cp -R $TRAVIS_BUILD_DIR/img/* output/manuscript-draft/img
-  - git config user.email ${EMAIL}
-  - git config user.name ${USER}
+  - git config user.email $EMAIL
+  - git config user.name $USER
   - git add output/*
   - git commit -m "Travis build sucessfull"
-  - git push "https://${GITHUB_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
+  - git push "https://$GITHUB_TOKEN@${GH_REPO}" master > /dev/null 2>&1
