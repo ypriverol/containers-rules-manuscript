@@ -40,6 +40,16 @@ issue and pull request.
   `manuscript.adoc` file.** This file is then converted to pdf and doc files automatically using
   `pandoc` and included in the main tex file.
 
+## Build document
+
+Please be sure you have installed Docker. Then you can run the followign command:
+
+```
+bash build.sh
+```
+
+A folder **manuscript-draft** would be created.
+
 ## Disclaimer
 
 The authors have no affiliation with [Docker](https://docker.com/) or [Conda](https://conda.io/docs/),
