@@ -15,7 +15,7 @@ aim here is to describe how the bioinformatics community can produce better soft
 
 Feel free to comment, fork and pull-request the current version of the manuscript. If you what to discuss issues or topics around the manuscript please feel fre to use the
 [issues](https://github.com/ypriverol/containers-rules-manuscript/issues) and/or pull
-requests.~~
+requests.
 
 Feel free to browse through existing/past issues and if one seems
 related, comment on it. If no existing issue seems appropriate, a new
