@@ -533,10 +533,6 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>{% set name = "" %}
-{% set version = "" %}</p>
-</div>
-<div class="paragraph">
 <p>package:
   name: abawaca
   version:1.00</p>
@@ -592,7 +588,78 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <h2 id="_3_versions_should_be_explicit_and_consider_both_the_tool_version_and_the_container_version">3. Versions should be explicit, and consider both the tool version and the container version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used. The version used for this main software should be included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like <code>&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;</code>. The container version, which does not track the tool changes but the container, should be versioned through semantic versioning to signal its backward compatibility.</p>
+<p>The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager or install method used (<strong>Box 2</strong>). The version used for this main software should be included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like <code>&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;</code>. The container version, which does not track the tool changes but the container, should be versioned through semantic versioning to signal its backward compatibility.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>FROM biocontainers/biocontainers:latest</p>
+</div>
+<div class="paragraph">
+<p>LABEL base_image="biocontainers:latest"</p>
+</div>
+<div class="paragraph">
+<p>LABEL version="3"</p>
+</div>
+<div class="paragraph">
+<p>LABEL software="Comet"</p>
+</div>
+<div class="paragraph">
+<p>LABEL software.version="2016012"</p>
+</div>
+<div class="paragraph">
+<p>LABEL about.summary="an open source tandem mass spectrometry sequence database search tool"</p>
+</div>
+<div class="paragraph">
+<p>LABEL about.home="http://comet-ms.sourceforge.net/"</p>
+</div>
+<div class="paragraph">
+<p>LABEL about.documentation="http://comet-ms.sourceforge.net/parameters/parameters_2016010/"</p>
+</div>
+<div class="paragraph">
+<p>LABEL about.license_file="http://comet-ms.sourceforge.net/"</p>
+</div>
+<div class="paragraph">
+<p>LABEL about.license="SPDX:Apache-2.0"</p>
+</div>
+<div class="paragraph">
+<p>LABEL extra.identifiers.biotools="comet"</p>
+</div>
+<div class="paragraph">
+<p>LABEL about.tags="Proteomics"</p>
+</div>
+<div class="paragraph">
+<p><mark><mark></mark><mark></mark></mark><mark><mark></mark><mark></mark> MAINTAINER </mark><mark><mark></mark><mark></mark></mark><mark><mark></mark><mark></mark></mark></p>
+</div>
+<div class="paragraph">
+<p>MAINTAINER Felipe da Veiga Leprevost &lt;<a href="mailto:felipe@leprevost.com.br">felipe@leprevost.com.br</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p><mark><mark></mark><mark></mark></mark><mark><mark></mark><mark></mark> INSTALLATION </mark><mark><mark></mark><mark></mark></mark><mark><mark></mark><mark></mark></mark></p>
+</div>
+<div class="paragraph">
+<p>USER biodocker</p>
+</div>
+<div class="paragraph">
+<p>RUN ZIP=comet_binaries_2016012.zip &amp;&amp; \
+  wget <a href="https://github.com/BioDocker/software-archive/releases/download/Comet/$ZIP" class="bare">https://github.com/BioDocker/software-archive/releases/download/Comet/$ZIP</a> -O /tmp/$ZIP &amp;&amp; \
+  unzip /tmp/$ZIP -d /home/biodocker/bin/Comet/ &amp;&amp; \
+  chmod -R 755 /home/biodocker/bin/Comet/* &amp;&amp; \
+  rm /tmp/$ZIP</p>
+</div>
+<div class="paragraph">
+<p>RUN mv /home/biodocker/bin/Comet/comet_binaries_2016012/comet.2016012.linux.exe /home/biodocker/bin/Comet/comet</p>
+</div>
+<div class="paragraph">
+<p>ENV PATH /home/biodocker/bin/Comet:$PATH</p>
+</div>
+<div class="paragraph">
+<p>WORKDIR /data/</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Box 2: BioContainers recipe for comet software. The metadata container the license of the software.</p>
 </div>
 <div class="paragraph">
 <p>If a copy is done via a git clone or equivalent, a specific tagged version should be copied, never the <em>latest</em> branch. Cloning the latest branch will copy the latest code making difficult to reproduce an operation since the latest branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case, the HEAD commit id of the clone should be used as the tool version for the container.</p>
@@ -737,7 +804,7 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-28 17:05:22 UTC
+Last updated 2018-04-28 17:26:44 UTC
 </div>
 </div>
 </body>
