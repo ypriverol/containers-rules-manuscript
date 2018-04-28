@@ -23,7 +23,7 @@ after_failure:
 after_success:      
   - mkdir output/manuscript
   - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
-  - mkdir output/1_1-metabolomics-draft/img
+  - mkdir output/manuscript-draft/img
   - cp -R $TRAVIS_BUILD_DIR/img/* output/manuscript-draft/img
 
 deploy:
