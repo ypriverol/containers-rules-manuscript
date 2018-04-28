@@ -530,6 +530,62 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <div class="paragraph">
 <p>Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a <em>Conda</em> package by defining a <em>BioConda</em> recipe (<strong>Box 1</strong>). This recipe (<a href="https://github.com/bioconda/bioconda-recipes">https://github.com/bioconda/bioconda-recipes</a>) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see <strong>Recomendation X</strong>). Each package added to Bioconda is also made available as a Docker container via Quay.io and displayed in the BioContainers registry (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). The BioContainers registry displays Docker containers as well as containers from other technologies such as rkt and Singularity (<a href="#bibliography-default-pmid28494014">Kurtzer, Sochat, &amp; Bauer, 2017</a>) making easier to find a discover packages and related containers.</p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>{% set name = "" %}
+{% set version = "" %}</p>
+</div>
+<div class="paragraph">
+<p>package:
+  name: abawaca
+  version:1.00</p>
+</div>
+<div class="paragraph">
+<p>source:
+  fn: abawaca-1.00.tar.gz
+  url: <a href="https://github.com/CK7/abawaca/archive/v{{" class="bare">https://github.com/CK7/abawaca/archive/v{{</a> version }}.tar.gz
+  sha256: 57465bb291c3a9af93605ffb11d704324079036205e5ac279601c9e98c467529</p>
+</div>
+<div class="paragraph">
+<p>build:
+  number: 0</p>
+</div>
+<div class="paragraph">
+<p>requirements:
+  build:
+    - gcc   # [not osx]
+    - llvm  # [osx]</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>run:
+  - libgcc    # [not osx]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>test:
+  commands:
+    - abawaca 2&gt;&amp;1 | grep Usage</p>
+</div>
+<div class="paragraph">
+<p>about:
+  home: 'https://github.com/CK7/abawaca'
+  license: "open source"
+  summary: "abawaca is a binning program for metagenomics"</p>
+</div>
+<div class="paragraph">
+<p>extra:
+  maintainers:
+    - keuv-grvl
+  identifiers:
+    - doi:10.1038/nature14486</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Box 1: BioConda Recipe</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -681,7 +737,7 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-28 16:37:04 UTC
+Last updated 2018-04-28 17:05:22 UTC
 </div>
 </div>
 </body>
