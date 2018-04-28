@@ -1,4 +1,4 @@
-==== Title: Recomendations to packaged and contenarized bioinformatics software
+==== Title: Recommendations to packaged and contenarized bioinformatics software
 :bibliography-database: manuscript.bib
 :bibliography-style: apa
 
