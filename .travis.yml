@@ -29,4 +29,4 @@ after_success:
   - git config user.name ${USER}
   - git add output/*
   - git commit -m "Travis build sucessfull"
-  - git push origin master > /dev/null 2>&1
+  - git push "https://${GITHUB_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
