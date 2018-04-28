@@ -25,8 +25,6 @@ after_success:
   - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
   - mkdir output/manuscript-draft/img
   - cp -R $TRAVIS_BUILD_DIR/img/* output/manuscript-draft/img
-  - git config user.email $EMAIL
-  - git config user.name $USER
   - git add output/*
   - git commit -m "Travis build sucessfull"
   - git push https://ypriverol:$GITHUB_TOKEN@$github.com/ypriverol/containers-rules-manuscript.git master > /dev/null 2>&1
