@@ -23,8 +23,8 @@ after_failure:
 after_success:      
   - mkdir output/manuscript
   - cp -R $TRAVIS_BUILD_DIR/output/* output/manuscript-draft
-  - mkdir output/manuscript-draft/img
-  - cp -R $TRAVIS_BUILD_DIR/img/* output/manuscript-draft/img
+  - mkdir output/manuscript-draft/imgs
+  - cp -R $TRAVIS_BUILD_DIR/imgs/* output/manuscript-draft/imgs
   - git add output/*
   - git commit -m "Travis build sucessfull"
   - git push https://ypriverol:$GITHUB_TOKEN@$github.com/ypriverol/containers-rules-manuscript.git master > /dev/null 2>&1
