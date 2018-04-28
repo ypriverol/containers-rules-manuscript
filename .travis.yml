@@ -10,7 +10,7 @@ before_install:
   - docker pull asciidoctor/docker-asciidoctor
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-html asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor -d book -D /documents/output manuscript.adoc
+  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor -d book -D /documents/output manuscript.adoc
 
 after_error: 
   - docker logs asciidoc-to-html
