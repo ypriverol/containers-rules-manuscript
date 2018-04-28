@@ -7,11 +7,11 @@ services:
 
 before_install:            
   - mkdir -p output
-  - docker pull asciidoctor/docker-asciidoctor
+  - docker pull alperyilmaz/asciidoctor
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-bibliography -d book -D /documents/output manuscript.adoc
-  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-bibliography -d book -D /documents/output manuscript.adoc
+  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-html alperyilmaz/asciidoctor asciidoctor -r asciidoctor-bibliography -d book -D /documents/output manuscript.adoc
+  - docker run -v $TRAVIS_BUILD_DIR/:/documents/ --name asciidoc-to-pdf alperyilmaz/asciidoctor asciidoctor-pdf -r asciidoctor-bibliography -d book -D /documents/output manuscript.adoc
 
 after_error: 
   - docker logs asciidoc-to-html
