@@ -1,4 +1,4 @@
-= Recommendations to packaged and contenarized bioinformatics software
+= Recommendations to package and containerize bioinformatics software
 :bibliography-database: manuscript.bibtex
 :bibliography-style: apa
 
