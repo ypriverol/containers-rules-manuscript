@@ -670,7 +670,7 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 <h2 id="_4_eschew_entrypoint">4. Eschew ENTRYPOINT</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Is a well-known feature of Docker that the entry-point of the container can be over-write by definition (e.g, ENTRYPOINT ["/bin/ping"]). The <strong>ENTRYPOINT</strong> specifies a command that will always be executed when the container starts. Even when the ENTRYPOINT helps the user get <em>default</em> behaviour for the tool, it is not well-recommended for reproducibility efforts of the original results or workflow. By specifinying the name of the tool in the container (not ENTRYPOINT) the user (e.g. workflow) recognize and trace which tool is used within the container.</p>
+<p>Is a well-known feature of Docker that the entry-point of the container can be over-written by definition (e.g, ENTRYPOINT ["/bin/ping"]). The <strong>ENTRYPOINT</strong> specifies a command that will always be executed when the container starts. Even when the ENTRYPOINT helps the user get <em>default</em> behaviour for the tool, it is not well-recommended for reproducibility efforts of the original results or workflow. By specifinying the name of the tool in the container (not ENTRYPOINT) the user (e.g. workflow) recognize and trace which tool is used within the container.</p>
 </div>
 </div>
 </div>
@@ -804,7 +804,7 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-04 09:15:44 UTC
+Last updated 2018-05-04 09:38:52 UTC
 </div>
 </div>
 </body>
