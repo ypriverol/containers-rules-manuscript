@@ -196,7 +196,7 @@ Biomedical research and bioinformatics demands more efforts to make bioinformati
 
 == Conclusions
 
-If you are involved in scientific research and have not containers or software packages  before, we recommend that you explore its potential as soon as possible cite:[pmid28379341]. As with many tools, a learning curve lays ahead, but several basic yet powerful features are accessible even to the beginner and may be applied to many different use-cases. To conclude, we would like to recommend some examples of bioinformatics containers in Biocontainers (Table 1) and some useful training materials, including workshops, online courses, and manuscripts (Table 2).
+For users involved in scientific research and bioinformatics interested in this topic without expereince working with software packages or containers, we recommend to explore and engage with the BioContainers initiative cite:[pmid28379341]. As with many tools, a learning curve lays ahead, but several basic yet powerful features are accessible even to the beginner and may be applied to many different use-cases. To conclude, we would like to recommend some examples of bioinformatics containers in BioContainers (Table 1) and some useful training materials, including workshops, online courses, and manuscripts (Table 2).
 
 == References
 
