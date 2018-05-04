@@ -182,17 +182,17 @@ This file containing the testing logic is not meant to be executed during contai
 == 9. Check the license of the software
 
 When adding software or data in a container, always check their license. A free to use license is not always a free to distribute or copy. License _must_ always be explicitly defined in your labels and depending on license, you must also include a copy of the license with the software. Same care must be applied to included data.
-If license is not specified, you should ask upstream author to provide a license.
+If license is not specified, you should ask the upstream author to provide a license.
 
 == 10. Make you package or container findable
 
 Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more Findable, Accessible, Interoperable, and Reusable (FAIR Principles) cite:[pmid26978244]. Leveraging those principles, we recommend to the bioinformatics community and software developers to make their containers and package more findable. In order to make your package available we recommend the following steps:
 
-- Annotate your package or container with some metadata that allows users (e.g. biologiests, bioinformatians) to find them.
+- Annotate packages and containers with metadata that allows users (e.g. biologists and bioinformatians) to find them.
 
-- Make your package/container available. We recommend that as a developer you should make the recipe of how to build your containers available for others, including i) the source code or binaries of the original tools; ii) configuration settings and test data.
+- Make packages and containers available. We recommend developers make the recipe of how to build a container available for others, including i) the source code or binaries of the original tools; ii) the configuration settings and test data.
 
-- Register your package/container with some of the existing bioinformatics intitiatives such as BioContainers cite:[pmid28379341], bio.tools cite:[pmid26538599] or BioConda cite:[207092]. Al these resources are fully connected and exchange metadata and information using different APIs and a common identifier system.
+- Register packages and container in existing bioinformatics registries helping users and services to find them. Registries such as BioContainers cite:[pmid28379341], bio.tools cite:[pmid26538599] and BioConda cite:[207092] do collaborate exchanging metadata and information using different APIs and a common identifier system. 
 
 == Conclusions
 
