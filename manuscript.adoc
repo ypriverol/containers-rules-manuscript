@@ -47,7 +47,7 @@ Containers should be defined as most granular as possible with the premise _one 
 * _Reusability_: a tool container should be safe to reuse by any other workflow component or task through its access interface.
 * _Interoperability_: different tools should be easy to connect and exchange information
 * _User’s acceptability_: tool container should encapsulate domain business process units, so it can be easier to check and use.
-* _Size_: Containers should be as small as possible as big as necessary. Smaller containers are much quicker to download and therefore they can be distributed to different machines much quicker. `RAFA: I do not know what we mean by attack surface. Please correct or remove the next sentence-&gt;`Less code/less programs in the container means less attack surface.
+* _Size_: Containers should be as small as possible as big as necessary. Smaller containers are much quicker to download and therefore they can be distributed to different machines much quicker.
 
 == 2. A package first
 
