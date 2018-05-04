@@ -93,7 +93,7 @@ extra:
     - doi:10.1038/nature14486
 **************************
 
-Box 1: BioConda Recipe
+Box 1: BioConda Recipe for "abawaca", a binning program for metagenomics.
 
 == 3. Versions should be explicit, and consider both the tool version and the container version
 
