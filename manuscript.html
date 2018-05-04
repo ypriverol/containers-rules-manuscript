@@ -712,7 +712,7 @@ in modern science. Evidences from multiple authors suggest that reproducibility 
 - Obtain sample files for testing, which might be for instance an example data set from a reference archive.
 - Run the software that the container wraps with that data to produce and output inside the container.
 - Compare the produced output and exit with an error code if the comparison is not successful.
-This file containing the testing logic is not meant to be executed during container buildtime, so the retrieved data/packages don&#8217;t increase the size of the container when this is executed once the container is built. This means that, because the file is inside the container, any user who has built the container or downloaded the container image can check that the container is working adequately by executing <code>runTest.sh</code> through the container.</p>
+This file containing the testing logic is not meant to be executed during container buildtime, so the retrieved data or packages do not increase the size of the container when this is executed once the container is built. This means that, because the file is inside the container, any user who has built the container or downloaded the container image can check that the container is working adequately by executing <code>runTest.sh</code> through the container.</p>
 </div>
 </div>
 </div>
@@ -804,7 +804,7 @@ If license is not specified, you should ask upstream author to provide a license
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-04 09:41:58 UTC
+Last updated 2018-05-04 09:46:19 UTC
 </div>
 </div>
 </body>
