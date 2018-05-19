@@ -318,7 +318,7 @@ your package available we recommend the following steps:
 This manuscript promotes and encourages adoption of package/container technologies to improve the quality and reusability of research software. The recommendations share a set of core views that are summarised below:
 
   * _Simplicity_: the encapsulated software should not be a complex environment of dependencies, tools and scripts.
-  * _Maintainability_: the more software is included to the container the harder it is to maintain it, specially when the
+  * _Maintainability_: the more software is included to the container the harder it is to maintain it, especially when the
     software comes from difference sources.
   * _Sustainability_: the developers of the software should be engaged or made aware to support the sustainability of the
     container.
