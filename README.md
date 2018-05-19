@@ -1,4 +1,4 @@
-# Recomendations to packaged and contenarized bioinformatics software
+# Recommendations to packaged and contenarized bioinformatics software
 
 [![Build Status](https://travis-ci.org/ypriverol/containers-rules-manuscript.svg?branch=master)](https://travis-ci.org/ypriverol/containers-rules-manuscript)
 
