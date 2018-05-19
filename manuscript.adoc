@@ -2,7 +2,7 @@
 :bibliography-database: manuscript.bibtex
 :bibliography-style: apa
 
-Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4),  Hervé Ménager (5), Dan Søndergaard (6), Michael R. Crusoe (7), Rafael C Jimenez (8)* and Yasset Perez-Riverol (1)*
+Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4),  Hervé Ménager (5), Dan Søndergaard (6), Fábio Madeira (1), Michael R. Crusoe (7), Rafael C Jimenez (8)* and Yasset Perez-Riverol (1)*
 
 Affiliation:
 
