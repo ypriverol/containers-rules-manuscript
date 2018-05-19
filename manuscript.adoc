@@ -154,7 +154,7 @@ Box 1: Bioconda recipe for "deeptools", a set of user-friendly tools for normali
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism
 available by the package manager used (**Box 2**). The version used for this main software should be
-included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of
+included in both, the metadata of the container (for ease of identification) and the container tag. The tag and metadata of
 the container should also include a versioning number for the container itself, meaning that the tag could look
 like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool
 changes but the container, should follow semantic versioning to signal its backward compatibility.
@@ -208,9 +208,20 @@ WORKDIR /data/
 
 Box 2: BioContainers recipe for comet software. The metadata container the license of the software.
 
-If a copy is done via `git clone` or equivalent, a specific commit or a tagged version should be specified, never
-a branch only. Cloning a branch (master, develop, etc) will use always the latest code in that branch making difficult
-to reproduce the build process since the branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case scenario, the HEAD commit SHA1 of the repo should be used as the tool version for the container. In general a tarball is preferred as the git history can be changed and commits can be removed.
+If a copy is done via `git clone` or equivalent, a specific commit or a tagged
+version should be specified, never a branch only. Cloning a branch (master,
+develop, etc) will use always the latest code in that branch making impossible
+to reproduce the build process since different code will be built as soon as
+the branch is updated by the software authors.  Upstream authors should be
+asked to create a stable version of their software with reasonable guarantees
+that the specified version works as advertise including passing all automated
+tests -- this will often be a _release_ version. Any patches added on top of
+the official released code should be clearly indicated. For projects that
+practice agile software development (including continuous integration) where
+each version is stable, tested and works as advertised, the SVN or git
+identifier should be used as the tool version for the container -- possibly
+with addition of a date in YYYYMMDD format to easily identify newer versions
+from older versions. 
 
 == 4. Avoid using ENTRYPOINT
 
