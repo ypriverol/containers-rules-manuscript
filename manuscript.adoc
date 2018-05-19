@@ -338,6 +338,8 @@ This manuscript promotes and encourages adoption of package/container technologi
     and use.
   * _Size_: Containers should be as small as possible. Smaller containers are much quicker to download and therefore they
     can be distributed to different machines much quicker.
+  * _Transparency_: Containers should be transparent in how they were built, which tasks they are designed to perform and 
+    how the build process can be reproduced.
 
 For users involved in scientific research and bioinformatics interested in this topic without experience working with
 software packages or containers, we recommend to explore and engage with the BioContainers initiative cite:[pmid28379341].
