@@ -502,7 +502,7 @@ development of complex and reproducible workflows and pipelines (<a href="#bibli
 <div class="paragraph">
 <p>This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of
 research software based on software packages and containers. It provides easy-to-implement recommendations that encourage
-adoption of packaging (e.g. conda) or containers (e.g. docker, singularity) technologies in bioinformatics and software
+adoption of packaging (e.g. Conda) or containers (e.g. Docker, Singularity) technologies in bioinformatics and software
 development for research. It provides recommendations about making research software and its source code more reproducible,
 deployable, reusable, transparent and more compatible with other tools and software.</p>
 </div>
@@ -525,22 +525,7 @@ system components (e.g. dependencies) required for execution (<a href="#bibliogr
 <div class="paragraph">
 <p>Containers should be defined as granular as possible, with the premise <em>one Tool, one Container</em>. Each container should
 encapsulate only one piece of software that performs a unique task with a well-defined goal (e.g. sequence aligner,
-mass spectra identification). In order to define the level of <em>granularity</em>, the following criteria should be considered:</p>
-</div>
-<div class="paragraph">
-<p>(todo: I think that the list here is partly covered by major points 2..10 and is not particularly atingent to the point "one tool, one container" where it is inserted. Having such a general set of criteria inside the first point defies the idea of having an additional set of recommendations that go past the 1st point, I would just reuse these points where they are relevant in the points 2..10)
-  * <em>Simplicity</em>: the encapsulated software should not be a complex environment of dependencies, tools and scripts.
-  * <em>Maintainability</em>: the more software is included to the container the harder it is to maintain it, specially when the
-    software comes from difference sources.
-  * <em>Sustainability</em>: the developers of the software should be engaged or made aware to support the sustainability of the
-    container.
-  * <em>Reusability</em>: a tool container should be safe to reuse by any other workflow component or task through its access
-    interface.
-  * <em>Interoperability</em>: different tools should be easy to connect and exchange information.
-  * <em>User’s acceptability</em>: tool container should encapsulate domain business process units, so it can be easier to check
-    and use.
-  * <em>Size</em>: Containers should be as small as possible. Smaller containers are much quicker to download and therefore they
-    can be distributed to different machines much quicker.</p>
+mass spectra identification).</p>
 </div>
 </div>
 </div>
@@ -548,9 +533,9 @@ mass spectra identification). In order to define the level of <em>granularity</e
 <h2 id="_2_a_package_first">2. A package first</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A software package is self-contained software including all the dependencies libraries and packages necesary to execute
-the software. Some of the most popular and well-known package distribution system are homebrew
-(<a href="https://brew.sh/">https://brew.sh</a>) and conda (<a href="https://conda.io)">https://conda.io)</a> (todo: aren&#8217;t apt and yum also very popular, if not more?). <em>Conda</em>, the most popular package
+<p>A software package is self-contained software including all the dependencies libraries and packages necessary to execute
+the software. Some of the most popular and well-known package distribution system are Homebrew
+(<a href="https://brew.sh/">https://brew.sh</a>) and Conda (<a href="https://conda.io)">https://conda.io)</a> (todo: aren&#8217;t apt and yum also very popular, if not more?). <em>Conda</em>, the most popular package
 manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies
 for many languages such as C, C++, R, Java and of course Python tools.
 ~~ In addition, <em>Conda</em> has joined to other popular
@@ -560,7 +545,7 @@ The field of computational biology has built an strong community around
 (Bioconda)[<a href="https://bioconda.github.io" class="bare">https://bioconda.github.io</a>)].</p>
 </div>
 <div class="paragraph">
-<p>Bioconda is a channel for the conda package manager specialised in bioinformatics software. You can create a <em>Conda</em>
+<p>Bioconda is a channel for the Conda package manager specialised in bioinformatics software. You can create a <em>Conda</em>
 package by defining a <em>BioConda</em> recipe (<strong>Box 1</strong>). This recipe
 (<a href="https://github.com/bioconda/bioconda-recipes">https://github.com/bioconda/bioconda-recipes</a>) includes enough information
 about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package
@@ -623,7 +608,7 @@ extra:
 </div>
 </div>
 <div class="sect1">
-<h2 id="_3_versions_should_be_explicit_and_consider_both_the_tool_version_and_the_container_version">3. Versions should be explicit, and consider both the tool version and the container version</h2>
+<h2 id="_3_tool_and_container_versions_should_be_explicit">3. Tool and container versions should be explicit</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism
@@ -694,7 +679,7 @@ to reproduce the build process since the branch might suffer constant changes. U
 </div>
 </div>
 <div class="sect1">
-<h2 id="_4_eschew_entrypoint">4. Eschew ENTRYPOINT</h2>
+<h2 id="_4_avoid_using_entrypoint">4. Avoid using ENTRYPOINT</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>It is a well-known feature of Docker that the entry-point of the container can be over-written by definition
@@ -729,7 +714,7 @@ There are many tips to reduce the size of your container in build time:
   - Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at
     all, used in runtime when your container is being used by others. For instance, packages like gcc can use several
     hundred megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software
-    during container buildtime, but are not needed for runtime.
+    during container build time, but are not needed for runtime.
   - Make sure you clean caches, unneeded downloads and temporary files.
   - In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers,
     development libraries and caches/temporary files) are left within the same layer.
@@ -754,7 +739,7 @@ from where you choose (for example, always the same Alpine version as first choi
 </div>
 </div>
 <div class="sect1">
-<h2 id="_8_add_some_testing_logic">8. Add some testing logic</h2>
+<h2 id="_8_add_functional_testing_logic">8. Add functional testing logic</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If others want to build locally your container, want to rebuild it later on with an updated base image, want to integrate
@@ -769,7 +754,7 @@ testing logic to the container (in the form of a bash script for instance) in a 
     - Compare the produced output and exit with an error code if the comparison is not successful.</p>
 </div>
 <div class="paragraph">
-<p>The file containing testing logic is not meant to be executed during container buildtime, so the retrieved data and/or
+<p>The file containing testing logic is not meant to be executed during container build time, so the retrieved data and/or
 packages do not increase the size of the container when it is being built. This means that,
 because the file is inside the container, any user who has built the container or downloaded the container image can check
 that the container is working adequately by executing <code>runTest.sh</code> inside the container.</p>
@@ -788,10 +773,10 @@ If license is not specified, you should ask the upstream author to provide a lic
 </div>
 </div>
 <div class="sect1">
-<h2 id="_10_make_you_package_or_container_findable">10. Make you package or container findable</h2>
+<h2 id="_10_make_you_package_or_container_discoverable">10. Make you package or container discoverable</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more Findable,
+<p>Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more discoverable,
 Accessible, Interoperable, and Reusable (FAIR Principles) (<a href="#bibliography-default-pmid26978244">Wilkinson et al., 2016</a>). Leveraging those principles, we recommend to
 the bioinformatics community and software developers to make their containers and package more findable. In order to make
 your package available we recommend the following steps:</p>
@@ -808,7 +793,7 @@ the configuration settings and test data.</p>
 </li>
 <li>
 <p>Register packages and container in existing bioinformatics registries helping users and services to find them.
-Registries such as BioContainers (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), bio.tools (<a href="#bibliography-default-pmid26538599">Ison et al., 2016</a>) and BioConda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>) do
+Registries such as BioContainers (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), bio.tools (<a href="#bibliography-default-pmid26538599">Ison et al., 2016</a>) and Bioconda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>) do
 collaborate exchanging metadata and information using different APIs and a common identifier system.</p>
 </li>
 <li>
@@ -823,7 +808,40 @@ and well supported institutional registry for container images.</p>
 <h2 id="_conclusions">Conclusions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For users involved in scientific research and bioinformatics interested in this topic without expereince working with
+<p>This manuscript promotes and encourages adoption of package/container technologies to improve the quality and reusability of research software. The recommendations share a set of core views that are summarised below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Simplicity</em>: the encapsulated software should not be a complex environment of dependencies, tools and scripts.</p>
+</li>
+<li>
+<p><em>Maintainability</em>: the more software is included to the container the harder it is to maintain it, specially when the
+software comes from difference sources.</p>
+</li>
+<li>
+<p><em>Sustainability</em>: the developers of the software should be engaged or made aware to support the sustainability of the
+container.</p>
+</li>
+<li>
+<p><em>Reusability</em>: a tool container should be safe to reuse by any other workflow component or task through its access
+interface.</p>
+</li>
+<li>
+<p><em>Interoperability</em>: different tools should be easy to connect and exchange information.</p>
+</li>
+<li>
+<p><em>User’s acceptability</em>: tool container should encapsulate domain business process units, so it can be easier to check
+and use.</p>
+</li>
+<li>
+<p><em>Size</em>: Containers should be as small as possible. Smaller containers are much quicker to download and therefore they
+can be distributed to different machines much quicker.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For users involved in scientific research and bioinformatics interested in this topic without experience working with
 software packages or containers, we recommend to explore and engage with the BioContainers initiative (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>).
 As with many tools, a learning curve lays ahead, but several basic yet powerful features are accessible even to the
 beginner and may be applied to many different use-cases. To conclude, we would like to recommend some examples of
@@ -882,7 +900,7 @@ courses, and manuscripts (Table 2).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-19 07:20:49 UTC
+Last updated 2018-05-19 12:47:06 UTC
 </div>
 </div>
 </body>
