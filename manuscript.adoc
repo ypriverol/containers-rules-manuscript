@@ -2,7 +2,7 @@
 :bibliography-database: manuscript.bibtex
 :bibliography-style: apa
 
-Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4),  Hervé Ménager (5), Dan Søndergaard (6), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Rafael C Jimenez (9)* and Yasset Perez-Riverol (1)*
+Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4),  Hervé Ménager (5), Dan Søndergaard (6), Hannes Röst (10), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Rafael C Jimenez (9)* and Yasset Perez-Riverol (1)*
 
 Affiliation:
 
@@ -23,6 +23,8 @@ Affiliation:
 (8) Microbiology and Molecular Genetics, Michigan State University, East Lansing, MI, USA.
 
 (9) ELIXIR Hub, Cambridge, CB10 1SD, UK.
+
+(10) The Donnelly Centre, University of Toronto, 160 College Street, Toronto, Ontario M5S 3E1, Canada. 
 
 == Introduction
 
