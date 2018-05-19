@@ -234,6 +234,7 @@ workflow) can recognize and trace which tool is used within the container.
 
 == 5. Relevant tools and software should be executable and in the PATH
 
+// TODO this may be merged with the point above (4)
 If for some reason the container needs to expose more than a single executable or script
 (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the
 container's default PATH. This will be mostly always the case by default for everything that is installed via a package
@@ -245,6 +246,7 @@ alternative commands to the main entrypoint easily.
 
 Since containers are being constantly being pushed and pulled over the internet, their size matters.
 There are many tips to reduce the size of your container in build time:
+
   - Avoid installing "recommended" packages in apt based systems.
   - Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at
     all, used in runtime when your container is being used by others. For instance, packages like gcc can use several
@@ -260,6 +262,7 @@ There are many tips to reduce the size of your container in build time:
 
 == 7. Choose a base image wisely.
 
+// TODO this may be merged with the point above (6)
 One of the decisions that will most likely impact on your final container image size will be your base image. If you can,
 start with a lightweight base image such as Alpine or similar, always using a fixed version and not the latest tag. If installing your software on
 top of such a minimal operating system doesn't work out well, only then use a larger OS where installation of
@@ -274,6 +277,7 @@ it to a continuous integration system or for many other reasons, users might wan
 container still serves the function for which it was originally designed. For this it is useful to add some
 testing logic to the container (in the form of a bash script for instance) in a standard location
 (here we propose a file called `runTest.sh`, executable and in the path) which includes all the logic for:
+
     - Installing any packages that might be needed for testing, such as wget for instance to retrieve example files for the
       run.
     - Obtain sample files for testing, which might be for instance an example data set from a reference archive.
