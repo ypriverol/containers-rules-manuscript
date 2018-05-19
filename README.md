@@ -5,15 +5,15 @@
 ## Description
 
 This repository contains the manuscript entitled:
-[**Recomendations to packaged and contenarized bioinformatics software**](https://github.com/ypriverol/containers-rules-manuscript). Our
-aim here is to describe how the bioinformatics community can produce better software containers and pakage to improve repducibility of original results.
+[**Recommendations to packaged and contenarized bioinformatics software**](https://github.com/ypriverol/containers-rules-manuscript). Our
+aim here is to describe how the bioinformatics community can produce better software containers and package to improve reducibility of original results.
 
 * Pre-print: Pending
 * Final Paper: Pending
 
 ## Commenting and contributing
 
-Feel free to comment, fork and pull-request the current version of the manuscript. If you what to discuss issues or topics around the manuscript please feel fre to use the
+Feel free to comment, fork and pull-request the current version of the manuscript. If you want to discuss issues or topics around the manuscript please feel free to use the
 [issues](https://github.com/ypriverol/containers-rules-manuscript/issues) and/or pull
 requests.
 
@@ -42,7 +42,7 @@ issue and pull request.
 
 ## Build document
 
-Please be sure you have installed Docker. Then you can run the followign command:
+Please be sure you have installed Docker. Then you can run the following command:
 
 ```
 bash build.sh
