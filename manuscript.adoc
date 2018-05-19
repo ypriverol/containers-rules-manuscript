@@ -159,7 +159,7 @@ extra:
 
 Box 1: Bioconda recipe for "deeptools", a set of user-friendly tools for normalization and visualzation of deep-sequencing data.
 
-== 3. Versions should be explicit, and consider both the tool version and the container version
+== 3. Tool and container versions should be explicit
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism
 available by the package manager used (**Box 2**). The version used for this main software should be
@@ -221,7 +221,7 @@ If a copy is done via `git clone` or equivalent, a specific commit or a tagged v
 a branch only. Cloning a branch (master, develop, etc) will use always the latest code in that branch making difficult
 to reproduce the build process since the branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case scenario, the HEAD commit SHA1 of the repo should be used as the tool version for the container. In general a tarball is preferred as the git history can be changed and commits can be removed.
 
-== 4. Eschew ENTRYPOINT
+== 4. Avoid using ENTRYPOINT
 
 It is a well-known feature of Docker that the entry-point of the container can be over-written by definition
 (e.g, ENTRYPOINT ["/bin/ping"]). The **ENTRYPOINT** specifies a command that will always be executed when the container
@@ -265,7 +265,7 @@ the software tool might be simpler (such as Ubuntu). Preferring stock base image
 them and that your container will be pulled faster, as shared layers are more likely. Always aim to have predefined images
 from where you choose (for example, always the same Alpine version as first choice and always the same Ubuntu version as second choice), so that most of your containers share the same base image.
 
-== 8. Add some testing logic
+== 8. Add functional testing logic
 
 If others want to build locally your container, want to rebuild it later on with an updated base image, want to integrate
 it to a continuous integration system or for many other reasons, users might want to test that the built
@@ -290,9 +290,9 @@ distribute or copy. License _must_ always be explicitly defined in your Docker l
 you must also include a copy of the license with the software. Same care must be applied to included data.
 If license is not specified, you should ask the upstream author to provide a license.
 
-== 10. Make you package or container findable
+== 10. Make you package or container discoverable
 
-Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more Findable,
+Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more discoverable,
 Accessible, Interoperable, and Reusable (FAIR Principles) cite:[pmid26978244]. Leveraging those principles, we recommend to
 the bioinformatics community and software developers to make their containers and package more findable. In order to make
 your package available we recommend the following steps:
