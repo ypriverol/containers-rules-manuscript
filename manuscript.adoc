@@ -28,10 +28,14 @@ Affiliation:
 
 The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges
 in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85%
-cite:[pmid24411643], while 90% of researchers seeing science in reproducibility crisis cite:[pmid27225100].
-One of the major drawbacks is to be able to reproduce the bioinformatics analysis,
-including the data processing and statistical downstream
-analysis cite:[pmid24204232]. Different authors have pointed out three main premises for reproducible bioinformatics software
+cite:[pmid24411643], with 90% of researchers seeing science in reproducibility crisis cite:[pmid27225100].
+One of the fundamental principles of reproducible science is accurate and
+complete reporting of all experimental and computational steps required to
+obtain the described results. This can be non-trivial especially for the
+computational part of an analysis and the ability to exactly reproduce the
+bioinformatics analysis, including the data processing and statistical
+downstream analysis, is one of the major challenges in many scientific projects
+cite:[pmid24204232]. Different authors have pointed out three main premises for reproducible bioinformatics software
 deployment: (i) the use and documentation of exact versions of software and tools,
 (ii) open source the code and all custom software,
 (iii) adopt a licence and comply with third-party dependency licenses cite:[pmid28751965]+[pmid24204232].
@@ -39,11 +43,12 @@ Most of these work has been focussed in the openness and availability of the too
 software, scripts and data to perform the
 bioinformatics analysis cite:[pmid24204232]+[pmid27415786].
 
-However, even if source code and data are published in a public repository (e.g GitHub)
-alongside the paper as open source artifacts, they come with many software dependencies, configurations,
-versions and other subtleties that hamper straight forward re-usability.
+However, even if source code and data are published in a public repository (e.g
+GitHub) alongside the paper as open source artifacts, they code may have
+non-obvious dependencies on other software, configuration options, operating system 
+and other subtleties that hamper straight forward re-usability.
 cite:[Boettiger:2015:IDR:2723872.2723882]. The build, installation and deployment of scientific software solutions (e.g.
-software or workflow) often requires internal knowledge that is missing in the published manuscript. In addition, most of
+software or workflow) often requires internal knowledge that is missing in the published manuscript as well as the accompanying documentation. In addition, most of
 the scientific software is developed by different teams but used in combination with workflows, scripts or pipelines.
 This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies;
 running serial and parallel processes; and working with a broad variety of software types and user-defined parameters.
@@ -151,7 +156,7 @@ Box 1: Bioconda recipe for "deeptools", a set of user-friendly tools for normali
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism
 available by the package manager used (**Box 2**). The version used for this main software should be
-included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of
+included in both, the metadata of the container (for ease of identification) and the container tag. The tag and metadata of
 the container should also include a versioning number for the container itself, meaning that the tag could look
 like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool
 changes but the container, should follow semantic versioning to signal its backward compatibility.
@@ -205,9 +210,20 @@ WORKDIR /data/
 
 Box 2: BioContainers recipe for comet software. The metadata container the license of the software.
 
-If a copy is done via `git clone` or equivalent, a specific commit or a tagged version should be specified, never
-a branch only. Cloning a branch (master, develop, etc) will use always the latest code in that branch making difficult
-to reproduce the build process since the branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case scenario, the HEAD commit SHA1 of the repo should be used as the tool version for the container. In general a tarball is preferred as the git history can be changed and commits can be removed.
+If a copy is done via `git clone` or equivalent, a specific commit or a tagged
+version should be specified, never a branch only. Cloning a branch (master,
+develop, etc) will use always the latest code in that branch making impossible
+to reproduce the build process since different code will be built as soon as
+the branch is updated by the software authors.  Upstream authors should be
+asked to create a stable version of their software with reasonable guarantees
+that the specified version works as advertise including passing all automated
+tests -- this will often be a _release_ version. Any patches added on top of
+the official released code should be clearly indicated. For projects that
+practice agile software development (including continuous integration) where
+each version is stable, tested and works as advertised, the SVN or git
+identifier should be used as the tool version for the container -- possibly
+with addition of a date in YYYYMMDD format to easily identify newer versions
+from older versions. 
 
 == 4. Avoid using ENTRYPOINT
 
@@ -220,6 +236,7 @@ workflow) can recognize and trace which tool is used within the container.
 
 == 5. Relevant tools and software should be executable and in the PATH
 
+// TODO this may be merged with the point above (4)
 If for some reason the container needs to expose more than a single executable or script
 (for instance, EMBOSS or other packages with many executables), these should always be executable and be available in the
 container's default PATH. This will be mostly always the case by default for everything that is installed via a package
@@ -231,6 +248,7 @@ alternative commands to the main entrypoint easily.
 
 Since containers are being constantly being pushed and pulled over the internet, their size matters.
 There are many tips to reduce the size of your container in build time:
+
   - Avoid installing "recommended" packages in apt based systems.
   - Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at
     all, used in runtime when your container is being used by others. For instance, packages like gcc can use several
@@ -246,6 +264,7 @@ There are many tips to reduce the size of your container in build time:
 
 == 7. Choose a base image wisely.
 
+// TODO this may be merged with the point above (6)
 One of the decisions that will most likely impact on your final container image size will be your base image. If you can,
 start with a lightweight base image such as Alpine or similar, always using a fixed version and not the latest tag. If installing your software on
 top of such a minimal operating system doesn't work out well, only then use a larger OS where installation of
@@ -260,6 +279,7 @@ it to a continuous integration system or for many other reasons, users might wan
 container still serves the function for which it was originally designed. For this it is useful to add some
 testing logic to the container (in the form of a bash script for instance) in a standard location
 (here we propose a file called `runTest.sh`, executable and in the path) which includes all the logic for:
+
     - Installing any packages that might be needed for testing, such as wget for instance to retrieve example files for the
       run.
     - Obtain sample files for testing, which might be for instance an example data set from a reference archive.
@@ -300,7 +320,7 @@ your package available we recommend the following steps:
 This manuscript promotes and encourages adoption of package/container technologies to improve the quality and reusability of research software. The recommendations share a set of core views that are summarised below:
 
   * _Simplicity_: the encapsulated software should not be a complex environment of dependencies, tools and scripts.
-  * _Maintainability_: the more software is included to the container the harder it is to maintain it, specially when the
+  * _Maintainability_: the more software is included to the container the harder it is to maintain it, especially when the
     software comes from difference sources.
   * _Sustainability_: the developers of the software should be engaged or made aware to support the sustainability of the
     container.
