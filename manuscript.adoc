@@ -26,10 +26,14 @@ Affiliation:
 
 The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges
 in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85%
-cite:[pmid24411643], while 90% of researchers seeing science in reproducibility crisis cite:[pmid27225100].
-One of the major drawbacks is to be able to reproduce the bioinformatics analysis,
-including the data processing and statistical downstream
-analysis cite:[pmid24204232]. Different authors have pointed out three main premises for reproducible bioinformatics software
+cite:[pmid24411643], with 90% of researchers seeing science in reproducibility crisis cite:[pmid27225100].
+One of the fundamental principles of reproducible science is accurate and
+complete reporting of all experimental and computational steps required to
+obtain the described results. This can be non-trivial especially for the
+computational part of an analysis and the ability to exactly reproduce the
+bioinformatics analysis, including the data processing and statistical
+downstream analysis, is one of the major challenges in many scientific projects
+cite:[pmid24204232]. Different authors have pointed out three main premises for reproducible bioinformatics software
 deployment: (i) the use and documentation of exact versions of software and tools,
 (ii) open source the code and all custom software,
 (iii) adopt a licence and comply with third-party dependency licenses cite:[pmid28751965]+[pmid24204232].
@@ -37,11 +41,12 @@ Most of these work has been focussed in the openness and availability of the too
 software, scripts and data to perform the
 bioinformatics analysis cite:[pmid24204232]+[pmid27415786].
 
-However, even if source code and data are published in a public repository (e.g GitHub)
-alongside the paper as open source artifacts, they come with many software dependencies, configurations,
-versions and other subtleties that hamper straight forward re-usability.
+However, even if source code and data are published in a public repository (e.g
+GitHub) alongside the paper as open source artifacts, they code may have
+non-obvious dependencies on other software, configuration options, operating system 
+and other subtleties that hamper straight forward re-usability.
 cite:[Boettiger:2015:IDR:2723872.2723882]. The build, installation and deployment of scientific software solutions (e.g.
-software or workflow) often requires internal knowledge that is missing in the published manuscript. In addition, most of
+software or workflow) often requires internal knowledge that is missing in the published manuscript as well as the accompanying documentation. In addition, most of
 the scientific software is developed by different teams but used in combination with workflows, scripts or pipelines.
 This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies;
 running serial and parallel processes; and working with a broad variety of software types and user-defined parameters.
