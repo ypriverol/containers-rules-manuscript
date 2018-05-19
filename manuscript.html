@@ -473,10 +473,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges
 in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85%
-(<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), while 90% of researchers seeing science in reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>).
-One of the major drawbacks is to be able to reproduce the bioinformatics analysis,
-including the data processing and statistical downstream
-analysis (<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Different authors have pointed out three main premises for reproducible bioinformatics software
+(<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), with 90% of researchers seeing science in reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>).
+One of the fundamental principles of reproducible science is accurate and
+complete reporting of all experimental and computational steps required to
+obtain the described results. This can be non-trivial especially for the
+computational part of an analysis and the ability to exactly reproduce the
+bioinformatics analysis, including the data processing and statistical
+downstream analysis, is one of the major challenges in many scientific projects
+(<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Different authors have pointed out three main premises for reproducible bioinformatics software
 deployment: (i) the use and documentation of exact versions of software and tools,
 (ii) open source the code and all custom software,
 (iii) adopt a licence and comply with third-party dependency licenses (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).
@@ -485,11 +489,12 @@ software, scripts and data to perform the
 bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
 </div>
 <div class="paragraph">
-<p>However, even if source code and data are published in a public repository (e.g GitHub)
-alongside the paper as open source artifacts, they come with many software dependencies, configurations,
-versions and other subtleties that hamper straight forward re-usability.
+<p>However, even if source code and data are published in a public repository (e.g
+GitHub) alongside the paper as open source artifacts, they code may have
+non-obvious dependencies on other software, configuration options, operating system
+and other subtleties that hamper straight forward re-usability.
 (<a href="#bibliography-default-Boettiger:2015:IDR:2723872.2723882">Boettiger, 2015</a>). The build, installation and deployment of scientific software solutions (e.g.
-software or workflow) often requires internal knowledge that is missing in the published manuscript. In addition, most of
+software or workflow) often requires internal knowledge that is missing in the published manuscript as well as the accompanying documentation. In addition, most of
 the scientific software is developed by different teams but used in combination with workflows, scripts or pipelines.
 This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies;
 running serial and parallel processes; and working with a broad variety of software types and user-defined parameters.</p>
@@ -616,7 +621,7 @@ extra:
 <div class="paragraph">
 <p>The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism
 available by the package manager used (<strong>Box 2</strong>). The version used for this main software should be
-included in both, the metadata of the container (for findability reasons) and the container tag. The tag and metadata of
+included in both, the metadata of the container (for ease of identification) and the container tag. The tag and metadata of
 the container should also include a versioning number for the container itself, meaning that the tag could look
 like <code>&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;</code>. The container version, which does not track the tool
 changes but the container, should follow semantic versioning to signal its backward compatibility.</p>
@@ -675,9 +680,20 @@ WORKDIR /data/</code></pre>
 <p>Box 2: BioContainers recipe for comet software. The metadata container the license of the software.</p>
 </div>
 <div class="paragraph">
-<p>If a copy is done via <code>git clone</code> or equivalent, a specific commit or a tagged version should be specified, never
-a branch only. Cloning a branch (master, develop, etc) will use always the latest code in that branch making difficult
-to reproduce the build process since the branch might suffer constant changes. Upstream authors should be asked to create a release if not available. In the worst case scenario, the HEAD commit SHA1 of the repo should be used as the tool version for the container. In general a tarball is preferred as the git history can be changed and commits can be removed.</p>
+<p>If a copy is done via <code>git clone</code> or equivalent, a specific commit or a tagged
+version should be specified, never a branch only. Cloning a branch (master,
+develop, etc) will use always the latest code in that branch making impossible
+to reproduce the build process since different code will be built as soon as
+the branch is updated by the software authors.  Upstream authors should be
+asked to create a stable version of their software with reasonable guarantees
+that the specified version works as advertise including passing all automated
+tests&#8201;&#8212;&#8201;this will often be a <em>release</em> version. Any patches added on top of
+the official released code should be clearly indicated. For projects that
+practice agile software development (including continuous integration) where
+each version is stable, tested and works as advertised, the SVN or git
+identifier should be used as the tool version for the container&#8201;&#8212;&#8201;possibly
+with addition of a date in YYYYMMDD format to easily identify newer versions
+from older versions.</p>
 </div>
 </div>
 </div>
@@ -712,19 +728,33 @@ alternative commands to the main entrypoint easily.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Since containers are being constantly being pushed and pulled over the internet, their size matters.
-There are many tips to reduce the size of your container in build time:
-  - Avoid installing "recommended" packages in apt based systems.
-  - Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at
-    all, used in runtime when your container is being used by others. For instance, packages like gcc can use several
-    hundred megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software
-    during container build time, but are not needed for runtime.
-  - Make sure you clean caches, unneeded downloads and temporary files.
-  - In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers,
-    development libraries and caches/temporary files) are left within the same layer.
-  - If installing or cloning from a git repositories, use shallow clones, which for large repos will save a lot of space.
-    (todo: the git repo is deleted in the same step, right? So why shallow clones? - there are many tools that don&#8217;t provide
-    an installation process (Galaxy for instance), so for some of them the installation might be just a git clone. Also, using
-    shallow clones will reduce download times during build time for large projects.)</p>
+There are many tips to reduce the size of your container in build time:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid installing "recommended" packages in apt based systems.</p>
+</li>
+<li>
+<p>Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at
+all, used in runtime when your container is being used by others. For instance, packages like gcc can use several
+hundred megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software
+during container build time, but are not needed for runtime.</p>
+</li>
+<li>
+<p>Make sure you clean caches, unneeded downloads and temporary files.</p>
+</li>
+<li>
+<p>In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers,
+development libraries and caches/temporary files) are left within the same layer.</p>
+</li>
+<li>
+<p>If installing or cloning from a git repositories, use shallow clones, which for large repos will save a lot of space.
+(todo: the git repo is deleted in the same step, right? So why shallow clones? - there are many tools that don&#8217;t provide
+an installation process (Galaxy for instance), so for some of them the installation might be just a git clone. Also, using
+shallow clones will reduce download times during build time for large projects.)</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -749,12 +779,24 @@ from where you choose (for example, always the same Alpine version as first choi
 it to a continuous integration system or for many other reasons, users might want to test that the built
 container still serves the function for which it was originally designed. For this it is useful to add some
 testing logic to the container (in the form of a bash script for instance) in a standard location
-(here we propose a file called <code>runTest.sh</code>, executable and in the path) which includes all the logic for:
-    - Installing any packages that might be needed for testing, such as wget for instance to retrieve example files for the
-      run.
-    - Obtain sample files for testing, which might be for instance an example data set from a reference archive.
-    - Run the software that the container wraps with that data to produce and output inside the container.
-    - Compare the produced output and exit with an error code if the comparison is not successful.</p>
+(here we propose a file called <code>runTest.sh</code>, executable and in the path) which includes all the logic for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Installing any packages that might be needed for testing, such as wget for instance to retrieve example files for the
+run.</p>
+</li>
+<li>
+<p>Obtain sample files for testing, which might be for instance an example data set from a reference archive.</p>
+</li>
+<li>
+<p>Run the software that the container wraps with that data to produce and output inside the container.</p>
+</li>
+<li>
+<p>Compare the produced output and exit with an error code if the comparison is not successful.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The file containing testing logic is not meant to be executed during container build time, so the retrieved data and/or
@@ -808,6 +850,43 @@ and well supported institutional registry for container images.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_11_provide_reproducible_builds">11. Provide reproducible builds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While docker containers strive to make research reproducible and transparent,
+it is equally important that the process of creating and building the docker
+containers themselves is transparent and reproducible.  Many docker containers
+do not provide an associated Dockerfile, which would allow an independent party
+to reproduce the container build independently. Other build procedures rely on
+the presence of specific web resources, download binary files from the internet
+or can only be built with in-house resources that are not available to the
+public.  Furthermore, a poorly documented build process makes it harder to
+provide updated versions of the tool itself, leading people to rely on outdated
+versions of a tool or (in the worst case) the possibility of undetected
+tampering with the source code. We therefore recommend to provide clearly
+documented steps on how to generate all the binaries directly from the source
+code. This relates to the distributed docker image but also the base image used
+and the procedure to generate any binary file that gets added to the container
+(preferably these files will be generated through a multi-stage build or in a
+different container whose Dockerfile is also available).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_document_the_build_files">12. Document the build files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding documentation to Dockerfiles will allow the author as well as users to
+understand the build process and modify it their needs. This means describing
+the rationale for each RUN step and advising the user where additional
+information can be obtained. If a certain resource may not be easily available
+or consists of a binary file, provide additional instructions on how to
+re-create this resource (e.g. a link to a second Docker file that creates the
+resource).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_conclusions">Conclusions</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -819,7 +898,7 @@ and well supported institutional registry for container images.</p>
 <p><em>Simplicity</em>: the encapsulated software should not be a complex environment of dependencies, tools and scripts.</p>
 </li>
 <li>
-<p><em>Maintainability</em>: the more software is included to the container the harder it is to maintain it, specially when the
+<p><em>Maintainability</em>: the more software is included to the container the harder it is to maintain it, especially when the
 software comes from difference sources.</p>
 </li>
 <li>
@@ -840,6 +919,10 @@ and use.</p>
 <li>
 <p><em>Size</em>: Containers should be as small as possible. Smaller containers are much quicker to download and therefore they
 can be distributed to different machines much quicker.</p>
+</li>
+<li>
+<p><em>Transparency</em>: Containers should be transparent in how they were built, which tasks they are designed to perform and
+how the build process can be reproduced.</p>
 </li>
 </ul>
 </div>
@@ -903,7 +986,7 @@ courses, and manuscripts (Table 2).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-19 17:59:40 UTC
+Last updated 2018-05-19 21:31:38 UTC
 </div>
 </div>
 </body>
