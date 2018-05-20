@@ -474,51 +474,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges
-in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85%
-(<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), with 90% of researchers seeing science in reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>).
-One of the fundamental principles of reproducible science is accurate and
-complete reporting of all experimental and computational steps required to
-obtain the described results. This can be non-trivial especially for the
-computational part of an analysis and the ability to exactly reproduce the
-bioinformatics analysis, including the data processing and statistical
-downstream analysis, is one of the major challenges in many scientific projects
-(<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Different authors have pointed out three main premises for reproducible bioinformatics software
-deployment: (i) the use and documentation of exact versions of software and tools,
-(ii) open source the code and all custom software,
-(iii) adopt a licence and comply with third-party dependency licenses (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).
-Most of these work has been focussed in the openness and availability of the tools,
-software, scripts and data to perform the
-bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
+<p>The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% (<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), with 90% of researchers seeing science in reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>). One of the fundamental principles of reproducible science is accurate and complete reporting of all experimental and computational steps required to obtain the described results. The ability to exactly reproduce a bioinformatics analysis, including data handling and statistical downstream processing, is one of the major challenges in many scientific projects (<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>), this can be non-trivial especially for the computational part of an analysis. Different authors have pointed out three main premises for reproducible bioinformatics software deployment: (i) documenting the version of all software, (ii) open source the code and all custom software, (iii) adopting a license and comply with third-party dependency licenses (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Most of these work has been focused in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
 </div>
 <div class="paragraph">
-<p>However, even if source code and data are published in a public repository (e.g
-GitHub) alongside the paper as open source artifacts, they code may have
-non-obvious dependencies on other software, configuration options, operating system
-and other subtleties that hamper straight forward re-usability.
-(<a href="#bibliography-default-Boettiger:2015:IDR:2723872.2723882">Boettiger, 2015</a>). The build, installation and deployment of scientific software solutions (e.g.
-software or workflow) often requires internal knowledge that is missing in the published manuscript as well as the accompanying documentation. In addition, most of
-the scientific software is developed by different teams but used in combination with workflows, scripts or pipelines.
-This adds an additional layer of complexity introducing challenges such as compatibility and management of dependencies;
-running serial and parallel processes; and working with a broad variety of software types and user-defined parameters.</p>
+<p>However, even if source code and data are published in a public repository, alongside the paper as open source supplementary material, the code may have non-obvious dependencies on other software, configuration options, operating system and other subtleties that hamper straightforward re-usability (<a href="#bibliography-default-Boettiger:2015:IDR:2723872.2723882">Boettiger, 2015</a>). The build, installation and deployment of scientific software often requires knowledge of what is missing in the published manuscript as well as the accompanying documentation. In addition, workflows and pipelines commonly combine software developed by different teams and groups, adding an additional layer of complexity and introducing challenges such as compatibility and management of dependencies, running serial and parallel processes and working with a broad variety of software types and user-defined parameters. Software containers have emerged as a powerful technology, distribute, and deploy scientific software and workflows (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). Containers constitute lightweight software components and libraries that can be easily packaged, designed to run anywhere (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), a useful and essential tool to leverage bioinformatics software reproducibility. Conda packages and Docker/Singularity containers are well known technologies already been applied to the field of bioinformatics, by May 2018, the BioContainers (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>) and Bioconda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>) communities have released more than 4000 public containers,  facilitating the development of complex and reproducible workflows and pipelines (<a href="#bibliography-default-pmid27137889">Afgan et al., 2016</a>; <a href="#bibliography-default-pmid28559010">Pfeuffer et al., 2017</a>).</p>
 </div>
 <div class="paragraph">
-<p>Software containers have emerged as a powerful technology to document, distribute, and deploy scientific software and
-workflows (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). Containers are lightweight software components and libraries easily packaged designed to run
-anywhere (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), thus useful to leverage bioinformatics software reproducibility. Conda packages and
-Docker/Singularity containers are technologies applicable to the field of bioinformatics. By May 2018, the BioContainers
-(<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>) and Bioconda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>) communities have released more than 4000 public containers facilitating the
-development of complex and reproducible workflows and pipelines (<a href="#bibliography-default-pmid27137889">Afgan et al., 2016</a>; <a href="#bibliography-default-pmid28559010">Pfeuffer et al., 2017</a>).</p>
-</div>
-<div class="paragraph">
-<p>This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of
-research software based on software packages and containers. It provides easy-to-implement recommendations that encourage
-adoption of packaging (e.g. Conda) or containers (e.g. Docker, Singularity) technologies in bioinformatics and software
-development for research. It provides recommendations about making research software and its source code more reproducible,
-deployable, reusable, transparent and more compatible with other tools and software.</p>
-</div>
-<div class="paragraph">
-<p>In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).</p>
+<p>This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software packages and containers. It provides easy-to-implement recommendations that encourage adoption of packaging (e.g. Conda) or containers (e.g. Docker, Singularity) technologies in bioinformatics and software development for research. It provides recommendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software. In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).</p>
 </div>
 </div>
 </div>
@@ -989,7 +951,7 @@ courses, and manuscripts (Table 2).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-19 23:03:57 UTC
+Last updated 2018-05-20 17:27:44 UTC
 </div>
 </div>
 </body>
