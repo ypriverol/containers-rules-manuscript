@@ -28,7 +28,7 @@ Affiliation:
 
 == Introduction
 
-The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% cite:[pmid24411643], with 90% of researchers seeing science in reproducibility crisis cite:[pmid27225100]. One of the fundamental principles of reproducible science is accurate and complete reporting of all experimental and computational steps required to obtain the described results. The ability to exactly reproduce a bioinformatics analysis, including data handling and statistical downstream processing, is one of the major challenges in many scientific projects cite:[pmid24204232], this can be non-trivial especially for the computational part of an analysis. Different authors have pointed out three main premises for reproducible bioinformatics software deployment: (i) documenting the version of all software, (ii) open source the code and all custom software, (iii) adopting a license and comply with third-party dependency licenses cite:[pmid28751965]+[pmid24204232]. Most of these work has been focused in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis cite:[pmid24204232]+[pmid27415786].
+The ability to reproduce the original results of a scientific discovery has been one of the major challenges in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% cite:[pmid24411643], with 90% of researchers seeing science in reproducibility crisis cite:[pmid27225100]. One of the fundamental principles of reproducible science is accurate and complete reporting of all experimental and computational steps required to obtain the described results. The ability to exactly reproduce a bioinformatics analysis, including data handling and statistical downstream processing, is one of the major challenges in many scientific projects cite:[pmid24204232], this can be non-trivial especially for the computational part of an analysis. Different authors have pointed out three main premises for reproducible bioinformatics software deployment: (i) documenting the version of all software, (ii) open source the code and all custom software, (iii) adopting a license and comply with third-party dependency licenses cite:[pmid28751965]+[pmid24204232]. Most of these work has been focused in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis cite:[pmid24204232]+[pmid27415786].
 
 However, even if source code and data are published in a public repository, alongside the paper as open source supplementary material, the code may have non-obvious dependencies on other software, configuration options, operating system and other subtleties that hamper straightforward re-usability cite:[Boettiger:2015:IDR:2723872.2723882]. The build, installation and deployment of scientific software often requires knowledge of what is missing in the published manuscript as well as the accompanying documentation. In addition, workflows and pipelines commonly combine software developed by different teams and groups, adding an additional layer of complexity and introducing challenges such as compatibility and management of dependencies, running serial and parallel processes and working with a broad variety of software types and user-defined parameters. Software containers have emerged as a powerful technology, distribute, and deploy scientific software and workflows cite:[pmid28379341]. Containers constitute lightweight software components and libraries that can be easily packaged, designed to run anywhere cite:[pmid28379341], a useful and essential tool to leverage bioinformatics software reproducibility. Conda packages and Docker/Singularity containers are well known technologies already been applied to the field of bioinformatics, by May 2018, the BioContainers cite:[pmid28379341] and Bioconda cite:[207092] communities have released more than 4000 public containers,  facilitating the development of complex and reproducible workflows and pipelines cite:[pmid28559010]+[pmid27137889].
 
@@ -57,7 +57,7 @@ for many languages such as C, C++, R, Java and of course Python tools.
 ~~ In addition, _Conda_ has joined to other popular
 packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of
 installing from a pre-built binary. ~~
-The field of computational biology has built an strong community around
+The field of computational biology has built a strong community around
 (Bioconda)[https://bioconda.github.io)].
 
 Bioconda is a channel for the Conda package manager specialised in bioinformatics software. You can create a _Conda_
@@ -108,7 +108,7 @@ test:
 about:
   home: https://github.com/fidelram/deepTools
   license: GPL3
-  summary: A set of user-friendly tools for normalization and visualzation of deep-sequencing data
+  summary: A set of user-friendly tools for normalization and visualization of deep-sequencing data
 
 extra:
   identifiers:
@@ -174,7 +174,7 @@ ENV PATH /home/biodocker/bin/Comet:$PATH
 WORKDIR /data/
 ```
 
-Box 2: BioContainers recipe for comet software. The metadata container the license of the software.
+Box 2: BioContainers recipe for comet software. The metadata contains the license of the software.
 
 If a copy is done via `git clone` or equivalent, a specific commit or a tagged
 version should be specified, never a branch only. Cloning a branch (master,
@@ -195,7 +195,7 @@ from older versions.
 
 It is a well-known feature of Docker that the entry-point of the container can be over-written by definition
 (e.g, ENTRYPOINT ["/bin/ping"]). The **ENTRYPOINT** specifies a command that will always be executed when the container
-starts. Even when the ENTRYPOINT helps the user to get s _default_ behaviour for a tool, it is not recommended because of
+starts. Even when the ENTRYPOINT helps the user to get a _default_ behaviour for a tool, it is not recommended because of
 reproducibility concerns of the implicit hidden execution point. By explicitly executing the tool by its executable inside the
 container (using the container as an environment and not as a fat binary merely through its ENTRYPOINT) the user (e.g.
 workflow) can recognize and trace which tool is used within the container.
@@ -223,7 +223,7 @@ There are many tips to reduce the size of your container in build time:
   - Make sure you clean caches, unneeded downloads and temporary files.
   - In Dockerfiles, combine multiple RUNs so that the initial packages installations and the final deletions (of compilers,
     development libraries and caches/temporary files) are left within the same layer.
-  - If installing or cloning from a git repositories, use shallow clones, which for large repos will save a lot of space.
+  - If installing or cloning from git repositories, use shallow clones, which for large repos will save a lot of space.
     (todo: the git repo is deleted in the same step, right? So why shallow clones? - there are many tools that don't provide
     an installation process (Galaxy for instance), so for some of them the installation might be just a git clone. Also, using
     shallow clones will reduce download times during build time for large projects.)
@@ -264,14 +264,14 @@ distribute or copy. License _must_ always be explicitly defined in your Docker l
 you must also include a copy of the license with the software. Same care must be applied to included data.
 If license is not specified, you should ask the upstream author to provide a license.
 
-== 10. Make you package or container discoverable
+== 10. Make your package or container discoverable
 
 Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more discoverable,
 Accessible, Interoperable, and Reusable (FAIR Principles) cite:[pmid26978244]. Leveraging those principles, we recommend to
 the bioinformatics community and software developers to make their containers and package more findable. In order to make
 your package available we recommend the following steps:
 
-  - Annotate packages and containers with metadata that allows users (e.g. biologists and bioinformatians) to find them.
+  - Annotate packages and containers with metadata that allows users (e.g. biologists and bioinformaticians) to find them.
   - Make packages and containers available. We recommend developers make the recipe of how to build a container available
     for others, including i) the source code or binaries of the original tools; ii)
     the configuration settings and test data.
