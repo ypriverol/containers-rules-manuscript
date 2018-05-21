@@ -474,10 +474,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The ability to reproduce the original results of a scientific discovery has been one of the mayor challenges in modern science. Evidences from multiple authors suggest that reproducibility in biomedical research is lower than 85% (<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), with 90% of researchers seeing science in reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>). One of the fundamental principles of reproducible science is accurate and complete reporting of all experimental and computational steps required to obtain the described results. The ability to exactly reproduce a bioinformatics analysis, including data handling and statistical downstream processing, is one of the major challenges in many scientific projects (<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>), this can be non-trivial especially for the computational part of an analysis. Different authors have pointed out three main premises for reproducible bioinformatics software deployment: (i) documenting the version of all software, (ii) open source the code and all custom software, (iii) adopting a license and comply with third-party dependency licenses (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Most of these work has been focused in the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
+<p>The ability to reproduce the original results of a scientific discovery has been one of the major challenges in modern science. Evidence from multiple authors suggest that reproducibility in biomedical research is lower than 85% (<a href="#bibliography-default-pmid24411643">Macleod et al., 2014</a>), with 90% of researchers seeing science in reproducibility crisis (<a href="#bibliography-default-pmid27225100">Baker, 2016</a>). One of the fundamental principles of reproducible science is accurate and complete reporting of all experimental and computational steps required to obtain the described results. The ability to exactly reproduce a bioinformatics analysis, including data handling and statistical downstream processing, is one of the major challenges in many scientific projects (<a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>), this can be non-trivial especially for the computational part of an analysis. Different authors have pointed out three main premises for reproducible bioinformatics software deployment: (i) documenting the version of all software, (ii) open source the code and all custom software, (iii) adopting a license and comply with third-party dependency licenses (<a href="#bibliography-default-pmid28751965">Jimenez et al., 2017</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>). Most of this work has been focused on the openness and availability of the tools, software, scripts and data to perform the bioinformatics analysis (<a href="#bibliography-default-pmid27415786">Perez-Riverol et al., 2016</a>; <a href="#bibliography-default-pmid24204232">Sandve, Nekrutenko, Taylor, &amp; Hovig, 2013</a>).</p>
 </div>
 <div class="paragraph">
-<p>However, even if source code and data are published in a public repository, alongside the paper as open source supplementary material, the code may have non-obvious dependencies on other software, configuration options, operating system and other subtleties that hamper straightforward re-usability (<a href="#bibliography-default-Boettiger:2015:IDR:2723872.2723882">Boettiger, 2015</a>). The build, installation and deployment of scientific software often requires knowledge of what is missing in the published manuscript as well as the accompanying documentation. In addition, workflows and pipelines commonly combine software developed by different teams and groups, adding an additional layer of complexity and introducing challenges such as compatibility and management of dependencies, running serial and parallel processes and working with a broad variety of software types and user-defined parameters. Software containers have emerged as a powerful technology, distribute, and deploy scientific software and workflows (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). Containers constitute lightweight software components and libraries that can be easily packaged, designed to run anywhere (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), a useful and essential tool to leverage bioinformatics software reproducibility. Conda packages and Docker/Singularity containers are well known technologies already been applied to the field of bioinformatics, by May 2018, the BioContainers (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>) and Bioconda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>) communities have released more than 4000 public containers,  facilitating the development of complex and reproducible workflows and pipelines (<a href="#bibliography-default-pmid27137889">Afgan et al., 2016</a>; <a href="#bibliography-default-pmid28559010">Pfeuffer et al., 2017</a>).</p>
+<p>However, even if source code and data are published in a public repository, alongside the paper as open source supplementary material, the code may have non-obvious dependencies on other software, configuration options, operating system and other subtleties that hamper straightforward re-usability (<a href="#bibliography-default-Boettiger:2015:IDR:2723872.2723882">Boettiger, 2015</a>). The build, installation and deployment of scientific software often requires knowledge of what is missing in the published manuscript as well as the accompanying documentation. In addition, workflows and pipelines commonly combine software developed by different teams and groups, adding an additional layer of complexity and introducing challenges such as compatibility and management of dependencies, running serial and parallel processes and working with a broad variety of software types and user-defined parameters. Software containers have emerged as a powerful technology to distribute and deploy scientific software and workflows (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). Containers constitute lightweight software components and libraries that can be easily packaged, are designed to run anywhere (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>), and are a useful and essential tool to leverage bioinformatics software reproducibility. Conda packages and Docker/Singularity containers are well known technologies thate have already been applied to the field of bioinformatics. By May 2018, the BioContainers (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>) and Bioconda (<a href="#bibliography-default-207092">“Bioconda: A sustainable and comprehensive software distribution for the life sciences,” 2017</a>) communities have released more than 4000 public containers,  facilitating the development of complex and reproducible workflows and pipelines (<a href="#bibliography-default-pmid27137889">Afgan et al., 2016</a>; <a href="#bibliography-default-pmid28559010">Pfeuffer et al., 2017</a>).</p>
 </div>
 <div class="paragraph">
 <p>This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software packages and containers. It provides easy-to-implement recommendations that encourage adoption of packaging (e.g. Conda) or containers (e.g. Docker, Singularity) technologies in bioinformatics and software development for research. It provides recommendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software. In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).</p>
@@ -489,7 +489,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="paragraph">
 <p>Microservice and modular architectures (<a href="#bibliography-default-7436659">Balalaie, Heydarnoori, &amp; Jamshidi, 2016</a>) provide a way of breaking large software projects into smaller,
-independent, and loosely coupled modules. This software applications can be seen as a suite of independently deployable,
+independent, and loosely coupled modules. These software applications can be seen as a suite of independently deployable,
 small, modular components in which each tool runs a <strong>unique</strong> process and communicates through a well-defined, lightweight
 mechanism to serve a business goal (<a href="#bibliography-default-7436659">Balalaie, Heydarnoori, &amp; Jamshidi, 2016</a>). Each of these independent modules are referred to as a <em>container</em>. A
 container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating
@@ -514,7 +514,7 @@ for many languages such as C, C++, R, Java and of course Python tools.
 ~~ In addition, <em>Conda</em> has joined to other popular
 packages manager systems such as Gentoo, BSD Ports, MacPorts, and Homebrew which build packages from source instead of
 installing from a pre-built binary. ~~
-The field of computational biology has built an strong community around
+The field of computational biology has built a strong community around
 (Bioconda)[<a href="https://bioconda.github.io" class="bare">https://bioconda.github.io</a>)].</p>
 </div>
 <div class="paragraph">
@@ -525,7 +525,7 @@ about the dependencies, the LICENSE and fundamental metadata to find, retrieve a
 (see <strong>Recomendation 10</strong>). Each package added to Bioconda is also made available as a Docker container via Quay.io, as a
 Singularity container and
 displayed in the BioContainers registry (<a href="#bibliography-default-pmid28379341">da Veiga Leprevost et al., 2017</a>). The BioContainers registry displays Docker containers as well
-as containers from other technologies such as rkt and Singularity (<a href="#bibliography-default-pmid28494014">Kurtzer, Sochat, &amp; Bauer, 2017</a>) making easier to find a discover
+as containers from other technologies such as rkt and Singularity (<a href="#bibliography-default-pmid28494014">Kurtzer, Sochat, &amp; Bauer, 2017</a>) making it easier to find and discover
 packages and related containers.</p>
 </div>
 <div class="listingblock">
@@ -567,7 +567,7 @@ test:
 about:
   home: https://github.com/fidelram/deepTools
   license: GPL3
-  summary: A set of user-friendly tools for normalization and visualzation of deep-sequencing data
+  summary: A set of user-friendly tools for normalization and visualization of deep-sequencing data
 
 extra:
   identifiers:
@@ -642,7 +642,7 @@ WORKDIR /data/</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Box 2: BioContainers recipe for comet software. The metadata container the license of the software.</p>
+<p>Box 2: BioContainers recipe for comet software. The metadata contains the license of the software.</p>
 </div>
 <div class="paragraph">
 <p>If a copy is done via <code>git clone</code> or equivalent, a specific commit or a tagged
@@ -668,7 +668,7 @@ from older versions.</p>
 <div class="paragraph">
 <p>It is a well-known feature of Docker that the entry-point of the container can be over-written by definition
 (e.g, ENTRYPOINT ["/bin/ping"]). The <strong>ENTRYPOINT</strong> specifies a command that will always be executed when the container
-starts. Even when the ENTRYPOINT helps the user to get s <em>default</em> behaviour for a tool, it is not recommended because of
+starts. Even when the ENTRYPOINT helps the user to get a <em>default</em> behaviour for a tool, it is not recommended because of
 reproducibility concerns of the implicit hidden execution point. By explicitly executing the tool by its executable inside the
 container (using the container as an environment and not as a fat binary merely through its ENTRYPOINT) the user (e.g.
 workflow) can recognize and trace which tool is used within the container.</p>
@@ -692,7 +692,7 @@ alternative commands to the main entrypoint easily.</p>
 <h2 id="_6_reduce_the_size_of_your_container_as_much_as_possible">6. Reduce the size of your container as much as possible</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since containers are being constantly being pushed and pulled over the internet, their size matters.
+<p>Since containers are constantly being pushed and pulled (uploaded and downloaded) over the internet, their size matters.
 There are many tips to reduce the size of your container in build time:</p>
 </div>
 <div class="ulist">
@@ -701,8 +701,8 @@ There are many tips to reduce the size of your container in build time:</p>
 <p>Avoid installing "recommended" packages in apt based systems.</p>
 </li>
 <li>
-<p>Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if not at
-all, used in runtime when your container is being used by others. For instance, packages like gcc can use several
+<p>Do not keep build tools in the image: this includes compilers and development libraries that will seldomly, if at
+all, be used in runtime when your container is being used by others. For instance, packages like gcc can use several
 hundred megabytes. This also applies to tools like git, wget or curl, which you might have used to retrieve software
 during container build time, but are not needed for runtime.</p>
 </li>
@@ -714,7 +714,7 @@ during container build time, but are not needed for runtime.</p>
 development libraries and caches/temporary files) are left within the same layer.</p>
 </li>
 <li>
-<p>If installing or cloning from a git repositories, use shallow clones, which for large repos will save a lot of space.
+<p>If installing or cloning from git repositories, use shallow clones, which for large repos will save a lot of space.
 (todo: the git repo is deleted in the same step, right? So why shallow clones? - there are many tools that don&#8217;t provide
 an installation process (Galaxy for instance), so for some of them the installation might be just a git clone. Also, using
 shallow clones will reduce download times during build time for large projects.)</p>
@@ -740,7 +740,7 @@ from where you choose (for example, always the same Alpine version as first choi
 <h2 id="_8_add_functional_testing_logic">8. Add functional testing logic</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If others want to build locally your container, want to rebuild it later on with an updated base image, want to integrate
+<p>If others want to locally build your container, want to rebuild it later on with an updated base image, want to integrate
 it to a continuous integration system or for many other reasons, users might want to test that the built
 container still serves the function for which it was originally designed. For this it is useful to add some
 testing logic to the container (in the form of a bash script for instance) in a standard location
@@ -766,7 +766,7 @@ run.</p>
 <div class="paragraph">
 <p>The file containing testing logic is not meant to be executed during container build time, so the retrieved data and/or
 packages do not increase the size of the container when it is being built. This means that,
-because the file is inside the container, any user who has built the container or downloaded the container image can check
+because the testing file is inside the container, any user who has built the container or downloaded the container image can check
 that the container is working adequately by executing <code>runTest.sh</code> inside the container.</p>
 </div>
 </div>
@@ -783,18 +783,18 @@ If license is not specified, you should ask the upstream author to provide a lic
 </div>
 </div>
 <div class="sect1">
-<h2 id="_10_make_you_package_or_container_discoverable">10. Make you package or container discoverable</h2>
+<h2 id="_10_make_your_package_or_container_discoverable">10. Make your package or container discoverable</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more discoverable,
+<p>Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more Findable (discoverable),
 Accessible, Interoperable, and Reusable (FAIR Principles) (<a href="#bibliography-default-pmid26978244">Wilkinson et al., 2016</a>). Leveraging those principles, we recommend to
-the bioinformatics community and software developers to make their containers and package more findable. In order to make
+the bioinformatics community and software developers to make their containers and packages more findable. In order to make
 your package available we recommend the following steps:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Annotate packages and containers with metadata that allows users (e.g. biologists and bioinformatians) to find them.</p>
+<p>Annotate packages and containers with metadata that allows users (e.g. biologists and bioinformaticians) to find them.</p>
 </li>
 <li>
 <p>Make packages and containers available. We recommend developers make the recipe of how to build a container available
@@ -807,7 +807,7 @@ Registries such as BioContainers (<a href="#bibliography-default-pmid28379341">d
 collaborate exchanging metadata and information using different APIs and a common identifier system.</p>
 </li>
 <li>
-<p>Deposit the built container image in a public container registry, such as Dockerhub, Quay.io or a publicly available
+<p>Deposit the built container image in a public container registry, such as Docker Hub, Quay.io or a publicly available
 and well supported institutional registry for container images.</p>
 </li>
 </ul>
@@ -846,7 +846,7 @@ understand the build process and modify it their needs. This means describing
 the rationale for each RUN step and advising the user where additional
 information can be obtained. If a certain resource may not be easily available
 or consists of a binary file, provide additional instructions on how to
-re-create this resource (e.g. a link to a second Docker file that creates the
+re-create this resource (e.g. a link to a second Dockerfile that creates the
 resource).</p>
 </div>
 </div>
@@ -860,7 +860,7 @@ your tool provides a help <code>-h</code>, <code>--help</code> or <code>?</code>
 this as the default command <code>CMD</code> in the Dockerfile. If your tool does not
 provide a default usage message, consider providing this information in an
 ancillary <code>README.md</code> message. Your tool&#8217;s help or usage message is a useful
-place to provide a list of command in logical groups, along with each command,
+place to provide a list of commands in logical groups, along with each command,
 give a brief description, defaults, required arguments, and options. See
 example <code>git help</code> message</p>
 </div>
@@ -924,7 +924,7 @@ to read about a specific subcommand or concept.</code></pre>
 <p><em>Simplicity</em>: the encapsulated software should not be a complex environment of dependencies, tools and scripts.</p>
 </li>
 <li>
-<p><em>Maintainability</em>: the more software is included to the container the harder it is to maintain it, especially when the
+<p><em>Maintainability</em>: the more software that is included in the container the harder it is to maintain it, especially when the
 software comes from difference sources.</p>
 </li>
 <li>
@@ -1012,7 +1012,7 @@ courses, and manuscripts (Table 2).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-21 11:56:26 UTC
+Last updated 2018-05-21 15:37:56 UTC
 </div>
 </div>
 </body>
