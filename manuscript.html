@@ -852,6 +852,67 @@ resource).</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_13_provide_helpful_usage_message">13. Provide helpful usage message</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Usability and discoverability are very important for packaged containers. If
+your tool provides a help <code>-h</code>, <code>--help</code> or <code>?</code> message, consider providing
+this as the default command <code>CMD</code> in the Dockerfile. If your tool does not
+provide a default usage message, consider providing this information in an
+ancillary <code>README.md</code> message. Your tool&#8217;s help or usage message is a useful
+place to provide a list of command in logical groups, along with each command,
+give a brief description, defaults, required arguments, and options. See
+example <code>git help</code> message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>usage: git [--version] [--help] [-C &lt;path&gt;] [-c name=value]
+           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+           &lt;command&gt; [&lt;args&gt;]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help &lt;command&gt;' or 'git help &lt;concept&gt;'
+to read about a specific subcommand or concept.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_conclusions">Conclusions</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -951,7 +1012,7 @@ courses, and manuscripts (Table 2).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-20 17:27:44 UTC
+Last updated 2018-05-21 11:56:26 UTC
 </div>
 </div>
 </body>
