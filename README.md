@@ -1,11 +1,11 @@
-# Recommendations to packaged and contenarized bioinformatics software
+# Recommendations to package and containerize bioinformatics software
 
 [![Build Status](https://travis-ci.org/ypriverol/containers-rules-manuscript.svg?branch=master)](https://travis-ci.org/ypriverol/containers-rules-manuscript)
 
 ## Description
 
 This repository contains the manuscript entitled:
-[**Recommendations to packaged and contenarized bioinformatics software**](https://github.com/ypriverol/containers-rules-manuscript). Our
+[**Recommendations to package and containerize bioinformatics software**](https://github.com/ypriverol/containers-rules-manuscript). Our
 aim here is to describe how the bioinformatics community can produce better software containers and package to improve reducibility of original results.
 
 * Pre-print: Pending
