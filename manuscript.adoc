@@ -49,8 +49,10 @@ mass spectra identification).
 
 == 2. A package first
 
-A software package is a self-contained software including all the dependencies libraries and packages necessary to execute
-the software. Some of the most popular and well-known package distribution systems are Homebrew
+
+A software package is self-contained software including all the dependencies libraries and packages necessary to execute
+the software. When choosing a package manager, it is important to select one that is cross-platform (e.g. works on various Linux flavors and MacOS), allows multiple versions of each package, and, ideally, is not restricted to a single programming language. Being cross-platform enhances reusability, providing for multiple versions enables reproducibility, and allowing multiple development languages simplifies usability.
+Some of the most popular and well-known package distribution system are Homebrew
 (https://brew.sh/[https://brew.sh]) and Conda (https://conda.io)[https://conda.io)] (todo: aren't apt and yum also very popular, if not more?). _Conda_, the most popular package
 manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies
 for many languages such as C, C++, R, Java and of course Python tools.
