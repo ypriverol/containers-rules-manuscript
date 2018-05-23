@@ -110,12 +110,12 @@ extra:
     - doi:10.1093/nar/gkw257
 ```
 
-Box 1: Bioconda recipe for "deeptools", a set of user-friendly tools for normalisation and visualisation of deep-sequencing data.
+Box 1: Bioconda recipe for "deepTools", a set of user-friendly tools for normalisation and visualisation of deep-sequencing data.
 
 == 3. Tool and container versions should be explicit
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager used (**Box 2**). The version used for this main software should be
-included in both, the metadata of the container (for ease of identification) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool changes but the container, should follow semantic versioning to signal its backward compatibility.
+included in both the metadata of the container (for ease of identification) and the container tag. The tag and metadata of the container should also include a versioning number for the container itself, meaning that the tag could look like `&lt;version-of-the-tool&gt;_cv&lt;version-of-the-container&gt;`. The container version, which does not track the tool changes but the container revision, should follow semantic versioning to signal its backward compatibility.
 
 
 ```Dockerfile
@@ -162,7 +162,7 @@ WORKDIR /data/
 
 ```
 
-Box 2: BioContainers recipe for comet software. The metadata contains the license of the software.
+Box 2: BioContainers recipe (Dockerfile) for Comet software. The metadata contains the license of the software.
 
 If a copy is done via `git clone` or equivalent, a specific commit or a tagged version should be specified, never a branch only. Cloning a branch (master, develop, etc.) will always use the latest source code in that branch making impossible to reproduce the build process since the different source code will be built as soon as the branch is updated by the software authors.  Upstream authors should be asked to create a stable version of their software with reasonable guarantees that the specified version works as advertise including passing all automated tests (Recommendation #8) -- this will often be a _release_ version. Any patches added on top of the officially released source code should be highlighted.
 
@@ -196,7 +196,7 @@ One of the decisions that will most likely impact on your final container image 
 
 == 6. Don't use a container to maintain data (No data inside the container)
 
-Data can dramatically increase the size of the container (Recommendation #5) reducing the capability to share, deploy and deposit it in public registries. In order to implement tests during the building and deployment step (Recommendation #7), we recommended to download or clone the data from public data repositories and delete it after the testing is pass. This mechanisms is similar to the one recommended in Recommendation #5 for retrieving source and binaries.
+Data can dramatically increase the size of the container (Recommendation #5), thereby reducing the capability to share, deploy and deposit it in public registries. In order to implement tests during the building and deployment steps (Recommendation #7), we recommend to download or clone the data from public data repositories and delete it after the testing is pass. This mechanism is similar to the one stated in Recommendation #5 for retrieving source and binaries.
 
 == 7. Add functional testing logic
 
