@@ -753,16 +753,16 @@ Registries such as BioContainers (<a href="#bibliography-default-pmid28379341">d
 </div>
 </div>
 <div class="sect1">
-<h2 id="_10_provide_reproducible_builds">10. Provide reproducible builds</h2>
+<h2 id="_10_provide_reproducible_and_documented_builds">10. Provide reproducible and documented builds</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>While docker containers strive to make research reproducible and transparent, it is equally essential that the process of creating and building the docker containers themselves is transparent and reproducible.  Many docker containers do not provide an associated Dockerfile, which would allow an independent party to reproduce and verify the container build independently. Other build procedures rely on the presence of specific web resources, download binary files from the internet or can only be built with in-house resources that are not available to the public.  Furthermore, a poorly documented build process makes it harder to provide updated versions of the tool itself, leading people to rely on outdated versions of a tool or (in the worst case) the possibility of undetected tampering of the source code. Our recommendation is to provide clear documented steps on how to generate all the binaries directly from the source code. This documentation step not only relates to the distributed docker image but also the base image used and the procedure to generate any binary file that gets added to the container (preferably these files will be generated through a multi-stage build or in a different container whose Dockerfile is also available).</p>
+<p>While docker containers strive to make research reproducible and transparent, it is equally essential that the process of creating and building the docker containers themselves is transparent and reproducible.  Many docker containers do not provide an associated Dockerfile, which would allow an independent party to reproduce and verify the container build independently. Other build procedures rely on the presence of specific web resources, download binary files from the internet or can only be built with in-house resources that are not available to the public.</p>
 </div>
-<div class="sect2">
-<h3 id="_10_1_document_the_build_files">10.1. Document the build files</h3>
 <div class="paragraph">
-<p>Adding documentation to Dockerfiles/Conda Recipe will allow the author as well as users to understand the build process and modify it their needs. This means describing the rationale for each RUN step and advising the user where additional information can be obtained. If a particular resource may not be readily available or consists of a binary file, provide further instructions on how to re-create this resource (e.g. a link to a second Dockerfile that creates the resource).</p>
+<p>With BioConda and BioContainers every recipe is available and the mechanisms to create and build it. The Biocontainers registry provides a view to each recipe. Our recommendation is to provide clear documented steps on how to generate all the binaries directly from the source code, if is possible engage with one of these two open-source communities to make your recipe available.</p>
 </div>
+<div class="paragraph">
+<p>Adding documentation to Dockerfiles/Conda Recipe will allow the author as well as users to understand the build process and modify it their needs. If a particular resource may not be readily available or consists of a binary file, provide further instructions on how to re-create this resource (e.g. a link to a second recipe that creates the resource).</p>
 </div>
 </div>
 </div>
@@ -891,7 +891,7 @@ your tool provides a help <code>-h</code>, <code>--help</code> or <code>?</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-24 19:46:52 UTC
+Last updated 2018-05-24 20:02:29 UTC
 </div>
 </div>
 </body>
