@@ -661,7 +661,7 @@ each version is stable, tested and works as advertised, the SVN or git identifie
 <h2 id="_5_reduce_the_size_of_your_container_as_much_as_possible">5. Reduce the size of your container as much as possible</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As containers are frequently pushed and pulled (uploaded and downloaded) to/from container registries over the internet, their size matters. There are multiple ways to reduce the size of your container during builds, the most efficient way is to have 2 different containers: one for building the app and the second container for deploying the app (which will be the one users will download). While you may need multiple libraries, source code and dependencies for building the app, you should only include the bare necessities in the deployment container, which will actually run the app. In your deployed container, you should</p>
+<p>As containers are frequently pushed and pulled (uploaded and downloaded) to/from container registries over the internet, their size matters. There are multiple ways to reduce the size of your container during builds, the most efficient way is to have 2 different containers: one for building the app and the second container for deploying the app (which will be the one users will download). While you may need multiple libraries, source code and dependencies for building the app, you should only include the bare necessities in the deployment container, which will actually run the app. Some general guidelines that can be follow (see Supplementary Information 1):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -675,24 +675,6 @@ each version is stable, tested and works as advertised, the SVN or git identifie
 <p>Use a lightweight base image for your deployed container, such as Alpine (only use a more mainstream image such as Ubuntu or CentOS if absolutely required for your application to run)</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>An example of a multi-stage build is provided in the following Dockerfile which uses a rather image (600 MB) large docker for building a go application while using a small (6 MB) distribution based on Alpine.  In order to a more readable approach you can name your build stages. By default, the stages are not named, and you refer to them by their integer number, starting with 0 for the first FROM instruction. However, you can name your stages, by adding an as <em>&lt;NAME&gt;</em> to the FROM instruction.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>FROM golang:1.7.3 as builder
-WORKDIR /go/src/github.com/alexellis/href-counter/
-RUN wget https://raw.githubusercontent.com/go-training/helloworld/master/main.go
-RUN mv main.go app.go
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
-
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-WORKDIR /root/
-COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
-CMD ["./app"]</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -909,7 +891,7 @@ your tool provides a help <code>-h</code>, <code>--help</code> or <code>?</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-24 19:11:15 UTC
+Last updated 2018-05-24 19:46:52 UTC
 </div>
 </div>
 </body>
