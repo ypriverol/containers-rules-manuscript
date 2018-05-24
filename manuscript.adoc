@@ -109,6 +109,8 @@ Microservice and modular architectures cite:[7436659] provide a way of breaking 
 
 Containers should be defined to be as granular as possible, with the premise _one Tool, one Container_. Each container should encapsulate only one piece of software that performs a unique task with a well-defined goal (e.g. sequence aligner, mass spectra identification).
 
+This recommendation _One tool, one Container_ should be implemented carefully keeping containers as modular and scoped in functionality as possible. You may use your judgement to compose a layered container based on other containerised tools. Here, we strongly recommend that the modular composition of these tools should also be exposed as a single modular tool - still abiding by "One Tool, One Container".
+
 == 3. Tool and container versions should be explicit
 
 The tool or software wrapped inside the container should be fixed explicitly to a defined version through the mechanism available by the package manager used (**Box 2**). The version used for this main software should be
