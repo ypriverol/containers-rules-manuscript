@@ -1,0 +1,24 @@
+= Supplementary Information: Recommendations to package and containerize bioinformatics software
+
+
+Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4),  Hervé Ménager (5), Dan Søndergaard (6), Hannes Röst (10), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Susheel Varma (1), Daniel Blankenberg (11), Rafael C Jimenez (9) and Yasset Perez-Riverol (1)*
+
+== 1. Guidelines to make your container smaller
+
+=== 1.1 Multi-stage Dockerfile
+
+An example of a multi-stage build is provided in the following Dockerfile which uses a rather image (600 MB) large docker for building a go application while using a small (6 MB) distribution based on Alpine.  In order to a more readable approach you can name your build stages. By default, the stages are not named, and you refer to them by their integer number, starting with 0 for the first FROM instruction. However, you can name your stages, by adding an as _<NAME>_ to the FROM instruction.
+
+```
+FROM golang:1.7.3 as builder
+WORKDIR /go/src/github.com/alexellis/href-counter/
+RUN wget https://raw.githubusercontent.com/go-training/helloworld/master/main.go
+RUN mv main.go app.go
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
+CMD ["./app"]
+```

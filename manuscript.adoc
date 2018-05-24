@@ -180,27 +180,11 @@ If for some reason the container needs to expose more than a single executable o
 
 == 5. Reduce the size of your container as much as possible
 
-As containers are frequently pushed and pulled (uploaded and downloaded) to/from container registries over the internet, their size matters. There are multiple ways to reduce the size of your container during builds, the most efficient way is to have 2 different containers: one for building the app and the second container for deploying the app (which will be the one users will download). While you may need multiple libraries, source code and dependencies for building the app, you should only include the bare necessities in the deployment container, which will actually run the app. In your deployed container, you should 
+As containers are frequently pushed and pulled (uploaded and downloaded) to/from container registries over the internet, their size matters. There are multiple ways to reduce the size of your container during builds, the most efficient way is to have 2 different containers: one for building the app and the second container for deploying the app (which will be the one users will download). While you may need multiple libraries, source code and dependencies for building the app, you should only include the bare necessities in the deployment container, which will actually run the app. Some general guidelines that can be follow (see Supplementary Information 1):
 
   - Avoid installing "recommended" packages in apt based systems in your deployed container.
   - Do not keep build tools in the deployed image (this includes compilers and development libraries). You can install these tools in the build image.
   - Use a lightweight base image for your deployed container, such as Alpine (only use a more mainstream image such as Ubuntu or CentOS if absolutely required for your application to run)
-
-An example of a multi-stage build is provided in the following Dockerfile which uses a rather image (600 MB) large docker for building a go application while using a small (6 MB) distribution based on Alpine.  In order to a more readable approach you can name your build stages. By default, the stages are not named, and you refer to them by their integer number, starting with 0 for the first FROM instruction. However, you can name your stages, by adding an as _<NAME>_ to the FROM instruction.
-
-```
-FROM golang:1.7.3 as builder
-WORKDIR /go/src/github.com/alexellis/href-counter/
-RUN wget https://raw.githubusercontent.com/go-training/helloworld/master/main.go  
-RUN mv main.go app.go
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
-
-FROM alpine:latest  
-RUN apk --no-cache add ca-certificates
-WORKDIR /root/
-COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
-CMD ["./app"]  
-```
 
 == 6. Don't use a container to maintain data (No data inside the container)
 
