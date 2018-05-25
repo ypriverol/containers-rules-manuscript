@@ -186,7 +186,7 @@ As containers are frequently pushed and pulled (uploaded and downloaded) to/from
   - Do not keep build tools in the deployed image (this includes compilers and development libraries). You can install these tools in the build image.
   - Use a lightweight base image for your deployed container, such as Alpine (only use a more mainstream image such as Ubuntu or CentOS if absolutely required for your application to run)
 
-== 6. Don't use a container to maintain data (No data inside the container)
+== 6. Keep data outside of the container
 
 Data can dramatically increase the size of the container (Recommendation #5), thereby reducing the capability to share, deploy and deposit it in public registries. In order to implement tests during the building and deployment steps (Recommendation #7), we recommend to download or clone the data from public data repositories and delete it after the testing is pass. This mechanism is similar to the one stated in Recommendation #5 for retrieving source and binaries.
 
