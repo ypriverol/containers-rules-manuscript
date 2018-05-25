@@ -2,7 +2,7 @@
 :bibliography-database: manuscript.bibtex
 :bibliography-style: apa
 
-Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4),  Hervé Ménager (5), Dan Søndergaard (6), Hannes Röst (10), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Susheel Varma (1), Daniel Blankenberg (11), Rafael C Jimenez (9) and Yasset Perez-Riverol (1)*
+Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4), Hervé Ménager (5), Dan Søndergaard (6), Hannes Röst (10), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Susheel Varma (1), Daniel Blankenberg (11), Rafael C Jimenez (9) and Yasset Perez-Riverol (1)*
 
 Affiliation:
 
@@ -36,7 +36,7 @@ In addition, reproducing a computational analysis by other researchers requires 
 
 However, even if source code and data are published in a public repository as supplementary material to a paper, the source code may have non-obvious dependencies on other software, configuration options, operating system and other subtleties that hamper re-usability cite:[Boettiger:2015:IDR:2723872.2723882]. Building, installing, and deploying scientific software often requires additional information missing in the published manuscript or the accompanying documentation. Also, workflows and pipelines commonly combine software developed by different teams and groups, adding another layer of complexity and introducing challenges such as compatibility and management of dependencies, running serial and parallel processes and working with a broad variety of software types and user-defined parameters. Software containers have emerged as a powerful technology to address primary dependency issues and enable distributing and deploying scientific software in a runnable state cite:[pmid28379341].
 
-Software packages are collections of computer programs along with metadata, such as dependencies, descriptions, and versions, required for distribution and deployment. Package management systems are used to search for software, resolve dependencies, and then install the requisite dependencies and software. The most common package managers exist at the level of the Operating System, such as yum, apt, and pacman. These allow installing software on a systemwide basis. Containers constitute lightweight software components and libraries that can be quickly packaged, are designed to run anywhere cite:[pmid28379341], and are a useful and essential tool to leverage bioinformatics software reproducibility. Package managers are often used to create the execution environment within containers. Conda packages and Docker/Singularity containers are well-known technologies that have already gained traction in the field of bioinformatics cite:[pmid29688462]. By May 2018, the BioContainers cite:[pmid28379341], and Bioconda cite:[207092] communities have released more than 4000 public containers,  facilitating the development of complex and reproducible workflows and pipelines cite:[pmid28559010]+[pmid29790989].
+Software packages are collections of computer programs along with metadata, such as dependencies, descriptions, and versions, required for distribution and deployment. Package management systems are used to search for software, resolve dependencies, and then install the requisite dependencies and software. The most common package managers exist at the level of the Operating System, such as yum, apt, and pacman. These allow installing software on a systemwide basis. Containers constitute lightweight software components and libraries that can be quickly packaged, are designed to run anywhere cite:[pmid28379341], and are a useful and essential tool to leverage bioinformatics software reproducibility. Package managers are often used to create the execution environment within containers. Conda packages and Docker/Singularity containers are well-known technologies that have already gained traction in the field of bioinformatics cite:[pmid29688462]. By May 2018, the BioContainers cite:[pmid28379341], and Bioconda cite:[207092] communities have released more than 4000 public containers, facilitating the development of complex and reproducible workflows and pipelines cite:[pmid28559010]+[pmid29790989].
 
 This manuscript describes a core set of recommendations and guidelines to improve the quality and sustainability of research software based on software packages and containers. It provides easy-to-implement recommendations that encourage adoption of packaging (e.g. Conda) and container (e.g. Docker, Singularity) technologies in bioinformatics and software development for research. It provides recommendations about making research software and its source code more reproducible, deployable, reusable, transparent and more compatible with other tools and software. In this manuscript, software is broadly defined to include command line tools, graphical user interfaces, application program interfaces (APIs), infrastructure scripts and software packages (e.g. R packages).
 
@@ -104,7 +104,7 @@ Box 1: Bioconda recipe for "deepTools", a set of user-friendly tools for normali
 == 2. One tool, one container
 
 // "each tool runs a *unique* process" -> maybe rather a unique function. in the case of generic tools, on single tool can perform multiple tasks in a complex workflow.
-Microservice and modular architectures cite:[7436659] provide a way of breaking large software projects into smaller, independent, and loosely coupled modules. These software applications can be viewed as a suite of independently deployable, small, modular components in which each tool runs a *unique* process and communicates through a well-defined, lightweight mechanism to serve a business goal cite:[7436659]. Each of these independent modules is referred to as a _container_. A container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating system components (e.g. dependencies) required for execution cite:[pmid28379341].
+Microservice and modular architectures cite:[7436659] provide a way of breaking large software projects into smaller, independent, and loosely coupled modules. These software applications can be viewed as a suite of independently deployable, small, modular components in which each tool runs a *unique* process and communicates through a well-defined, lightweight mechanism to serve a specific task cite:[7436659]. Each of these independent modules is referred to as a _container_. A container is essentially an encapsulated and immutable version of an application, coupled with the bare-minimum operating system components (e.g. dependencies) required for execution cite:[pmid28379341].
 
 Containers should be defined to be as granular as possible, with the premise _one Tool, one Container_. Each container should encapsulate only one piece of software that performs a unique task with a well-defined goal (e.g. sequence aligner, mass spectra identification).
 
@@ -163,7 +163,7 @@ WORKDIR /data/
 
 Box 2: BioContainers recipe (Dockerfile) for Comet software. The metadata contains the license of the software.
 
-If a copy is done via `git clone` or equivalent, a specific commit or a tagged version should be specified, never a branch only. Cloning a branch (master, develop, etc.) will always use the latest source code in that branch making impossible to reproduce the build process since the different source code will be built as soon as the branch is updated by the software authors.  Upstream authors should be asked to create a stable version of their software with reasonable guarantees that the specified version works as advertise including passing all automated tests (Recommendation #8) -- this will often be a _release_ version. Any patches added on top of the officially released source code should be highlighted.
+If a copy is done via `git clone` or equivalent, a specific commit or a tagged version should be specified, never a branch only. Cloning a branch (master, develop, etc.) will always use the latest source code in that branch making impossible to reproduce the build process since the different source code will be built as soon as the branch is updated by the software authors. Upstream authors should be asked to create a stable version of their software with reasonable guarantees that the specified version works as advertise including passing all automated tests (Recommendation #8) -- this will often be a _release_ version. Any patches added on top of the officially released source code should be highlighted.
 
 For projects that practice agile software development (including continuous integration) where
 each version is stable, tested and works as advertised, the SVN or git identifier should be used as the tool version for the container -- possibly with the addition of a date in YYYYMMDD format to easily identify newer versions from older versions.
@@ -186,7 +186,7 @@ As containers are frequently pushed and pulled (uploaded and downloaded) to/from
   - Do not keep build tools in the deployed image (this includes compilers and development libraries). You can install these tools in the build image.
   - Use a lightweight base image for your deployed container, such as Alpine (only use a more mainstream image such as Ubuntu or CentOS if absolutely required for your application to run)
 
-== 6. Don't use a container to maintain data (No data inside the container)
+== 6. Keep data outside of the container
 
 Data can dramatically increase the size of the container (Recommendation #5), thereby reducing the capability to share, deploy and deposit it in public registries. In order to implement tests during the building and deployment steps (Recommendation #7), we recommend to download or clone the data from public data repositories and delete it after the testing is pass. This mechanism is similar to the one stated in Recommendation #5 for retrieving source and binaries.
 
@@ -201,7 +201,7 @@ If others want to build your container locally, want to rebuild it later on with
     - Run the software that the container wraps with that data to produce an output inside the container.
     - Compare the generated output and exit with an error code if the comparison is not successful.
 
-The file containing testing logic is not meant to be executed during container build time, so the retrieved data and/or packages do not increase the size of the container when it is built. However, because the testing file is inside the container, any user who has built the container or downloaded the container image can check
+The file containing testing logic is not meant to be executed during container build time, so the retrieved data and packages do not increase the size of the container when it is built. However, because the testing file is inside the container, any user who has built the container or downloaded the container image can check
 that the container is working as intended by the author by executing `runTest.sh` inside the container.
 
 == 8. Check the license of the software
@@ -222,11 +222,11 @@ Biomedical research and bioinformatics demands more efforts to make bioinformati
 
 == 10. Provide reproducible and documented builds
 
-While docker containers strive to make research reproducible and transparent, it is equally essential that the process of creating and building the docker containers themselves is transparent and reproducible.  Many docker containers do not provide an associated Dockerfile, which would allow an independent party to reproduce and verify the container build independently. Other build procedures rely on the presence of specific web resources, download binary files from the internet or can only be built with in-house resources that are not available to the public.
+While docker containers strive to make research reproducible and transparent, it is equally essential that the process of creating and building the docker containers themselves is transparent and reproducible. Many docker containers do not provide an associated Dockerfile, which would allow an independent party to reproduce and verify the container build independently. Other build procedures rely on the presence of specific web resources, download binary files from the internet or can only be built with in-house resources that are not available to the public.
 
 With BioConda and BioContainers every recipe is available and the mechanisms to create and build it. The Biocontainers registry provides a view to each recipe. Our recommendation is to provide clear documented steps on how to generate all the binaries directly from the source code, if is possible engage with one of these two open-source communities to make your recipe available.
 
-Adding documentation to Dockerfiles/Conda Recipe will allow the author as well as users to understand the build process and modify it their needs. If a particular resource may not be readily available or consists of a binary file, provide further instructions on how to re-create this resource (e.g. a link to a second recipe that creates the resource).
+Adding documentation to Dockerfiles and Conda recipes will allow the author as well as users to understand the build process and modify it their needs. If a particular resource may not be readily available or consists of a binary file, provide further instructions on how to re-create this resource (e.g. a link to a second recipe that creates the resource).
 
 == 11. Provide helpful usage message
 
@@ -235,14 +235,14 @@ your tool provides a help `-h`, `--help` or `?` message, consider providing this
 
 == Conclusions
 
-This manuscript promotes and encourages adoption of package/container technologies to improve the quality and reusability of research software. The recommendations share a set of core views that are summarised below:
+This manuscript promotes and encourages adoption of package and container technologies to improve the quality and reusability of research software. The recommendations share a set of core views that are summarised below:
 
   * _Simplicity_: the encapsulated software should not be a complex environment of dependencies, tools and scripts.
   * _Maintainability_: the more software included in the container, the harder it is to maintain it, especially when the software comes from different sources.
   * _Sustainability_: the developers of the software should be engaged or made aware of supporting the sustainability of the container.
   * _Reusability_: a tool container should be safe to reuse by any other workflow component or task through its access interface.
   * _Interoperability_: different tools should be easy to connect and exchange information.
-  * _User’s acceptability_: tool container should encapsulate domain business process units, so it can be easier to check and use.
+  * _User’s acceptability_: a tool container should perform a specific atomic task, so it is easier to check and use.
   * _Size_: containers should be as small as possible. Smaller containers are much quicker to download and therefore they can be distributed to different machines much quicker.
   * _Transparency_: containers should be transparent in how they are built, which tasks they are designed to perform and how the build process can be reproduced.
 
