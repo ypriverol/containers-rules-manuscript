@@ -2,7 +2,7 @@
 :bibliography-database: manuscript.bibtex
 :bibliography-style: apa
 
-Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4), Hervé Ménager (5), Dan Søndergaard (6), Hannes Röst (10), Timo Sachsenberg (11), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Susheel Varma (1), Daniel Blankenberg (11), Rafael C Jimenez (9) and Yasset Perez-Riverol (1)*
+Authors: Bjorn Gruening (2), Olivier Sallou (3), Pablo Moreno (1), Felipe da Veiga Leprevost (4), Hervé Ménager (5), Dan Søndergaard (6), Hannes Röst (10), Timo Sachsenberg (12), Brian O'Connor (13), Fábio Madeira (1), Victoria Dominguez Del Angel (7), Michael R. Crusoe (8), Susheel Varma (1), Daniel Blankenberg (11), Rafael C Jimenez (9) and Yasset Perez-Riverol (1)*
 
 Affiliation:
 
@@ -29,6 +29,8 @@ Affiliation:
 (11) Genomic Medicine Institute, Lerner Research Institute, Cleveland Clinic, Cleveland, OH, USA.
 
 (12) Universität Tübingen, Wilhelm Schickard Institut für Informatik, Applied Bioinformatics Group,D-72076 Tübingen, Germany.
+
+(13) Computational Genomics Lab, UC Santa Cruz Genomics Institute, University of California Santa Cruz, Santa Cruz, California, USA.
 
 == Introduction
 
