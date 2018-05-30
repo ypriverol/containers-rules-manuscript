@@ -209,15 +209,15 @@ that the container is working as intended by the author by executing `runTest.sh
 
 == 8. Check the license of the software
 
-When adding software or data in a container, always check the license of the resource being added. A free to use license is not always free to distribute or copy. License _must_ always be explicitly defined in your Docker labels and depending on the license. You must also include a copy of the license with the software. The same care must be applied to included data. If a license is not specified, you should ask the upstream author to provide a license.
+When adding software or data in a container, always check the license of the resource being added. A free to use license is not always free to distribute or copy. License _must_ always be explicitly defined in your Docker labels. For some licenses the license file needs to be shipped within the container and with the software. The same care must be applied to included data [FIXME, we do not include data ...]. If a license is not specified, you should ask the upstream author to provide a license.
 
 == 9. Make your package or container discoverable
 
 Biomedical research and bioinformatics demands more efforts to make bioinformatics software and data more Findable (discoverable), Accessible, Interoperable, and Reusable (FAIR Principles) cite:[pmid26978244]. Leveraging those principles, we recommend to the bioinformatics community and software developers to make their containers and packages more findable. To make your package available, we recommend the following steps:
 
   - Annotate packages and containers with metadata that allows users (e.g. biologists and bioinformaticians) to find them.
-  - Make packages and containers available. We recommend developers make the recipe of how to build a container available
-    for others, including i) the source code or binaries of the original tools; ii)
+  - Make packages and containers available. We recommend developers to make the recipe of how to build a
+    container available for others, including i) the source code or binaries of the original tools; ii)
     the configuration settings and test data.
   - Register packages and container in existing bioinformatics registries helping users and services to find them.
     Registries such as BioContainers cite:[pmid28379341], bio.tools cite:[pmid26538599], and Bioconda cite:[207092] collaborate with each other by exchanging metadata and information using different APIs and a common identifier system.
@@ -225,7 +225,7 @@ Biomedical research and bioinformatics demands more efforts to make bioinformati
 
 == 10. Provide reproducible and documented builds
 
-While docker containers strive to make research reproducible and transparent, it is equally essential that the process of creating and building the docker containers themselves is transparent and reproducible. Many docker containers do not provide an associated Dockerfile, which would allow an independent party to reproduce and verify the container build independently. Other build procedures rely on the presence of specific web resources, download binary files from the internet or can only be built with in-house resources that are not available to the public.
+While containers strive to make research reproducible and transparent, it is equally essential that the process of creating and building containers themselves is transparent and reproducible. Many Docker containers do not provide an associated Dockerfile, which would allow an independent party to reproduce and verify the container build independently. Other build procedures rely on the presence of specific web resources, download binary files from the internet or can only be built with in-house resources that are not available to the public.
 
 With BioConda and BioContainers every recipe is available and the mechanisms to create and build it. The Biocontainers registry provides a view to each recipe. Our recommendation is to provide clear documented steps on how to generate all the binaries directly from the source code, if is possible engage with one of these two open-source communities to make your recipe available.
 
@@ -234,7 +234,7 @@ Adding documentation to Dockerfiles and Conda recipes will allow the author as w
 == 11. Provide helpful usage message
 
 Usability and discoverability are crucial for packaged containers. If 
-your tool provides a help `-h`, `--help` or `?` message, consider providing this as the default command `CMD` in the Dockerfile. If your tool does not provide a default usage message, consider providing this information in an ancillary `README.md` message. Your tool's help or usage message is a useful place to provide a list of commands in logical groups, along with each command, give a brief description, defaults, required arguments, and options.
+your tool provides a help `-h`, `--help` or `?` message, consider providing this as the default command, `CMD` in case of a Dockerfile. If your tool does not provide a default usage message, consider providing this information in an ancillary `README.md` message. Your tool's help or usage message is a useful place to provide a list of commands in logical groups, along with each command, give a brief description, defaults, required arguments, and options.
 
 == Conclusions
 
