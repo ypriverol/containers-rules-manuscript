@@ -48,9 +48,9 @@ This manuscript describes a core set of recommendations and guidelines to improv
 
 A software package is self-contained software including all the dependency libraries and packages necessary to execute the software. Some of the most popular and well-known package management systems are operating system level, such as apt or yum, are language specific resources, such as pip/PyPI, CPAN, or CRAN, or are third-party package managers such as Zero Install (http://0install.net/[http://0install.net]), Homebrew (https://brew.sh/[https://brew.sh]), and Conda (https://conda.io)[https://conda.io)]. When choosing a package manager, it is important to select one that is cross-platform (e.g. works on various Linux distributions and MacOS), allows multiple versions of each package, does not require administrative nor elevated privileges to use and, ideally, is not restricted to a single programming language. Being cross-platform enhances reusability, providing for multiple versions enables reproducibility, and allowing user-based installation and multiple development languages simplifies usability.
 
-Conda, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies for many languages such as C, C++, R, Java, Perl, and Python tools. It works cross-platform and does not require special permissions for installation of itself or requested packages. Conda supports the creation of individual and unique execution environments and allows multiple versions of packages to be installed in a user-declared fashion.
+Conda, the most popular package manager in research software, quickly installs, runs and updates packages and their dependencies. It handles dependencies for many languages such as C, C++, R, Java, Perl, and Python. It works cross-platform and does not require special permissions for installation of itself or requested packages. Conda supports the creation of individual and unique execution environments and allows multiple versions of packages to be installed in a user-declared fashion.
 
-The field of computational biology has developed an active community around (Bioconda)[https://bioconda.github.io)]. Bioconda is a channel for the Conda package manager specialised in bioinformatics software. You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes[https://github.com/bioconda/bioconda-recipes]) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see *Recommendation 10*). When a recipe is added to Bioconda, it is automatically built into a usable package, tested, and made available as a Docker container via Quay.io and as a Singularity container, and displayed in the BioContainers registry cite:[pmid28379341].
+The field of computational biology has developed an active community around (Bioconda)[https://bioconda.github.io)] (REF. https://www.biorxiv.org/content/early/2017/10/21/207092). Bioconda is a channel for the Conda package manager specialised in bioinformatics software. You can create a _Conda_ package by defining a _BioConda_ recipe (**Box 1**). This recipe (https://github.com/bioconda/bioconda-recipes[https://github.com/bioconda/bioconda-recipes]) includes enough information about the dependencies, the LICENSE and fundamental metadata to find, retrieve and use the package (see *Recommendation 10*). When a recipe is added to Bioconda, it is automatically built into a usable package, tested, and made available as a Docker container via Quay.io and as a Singularity container, and displayed in the BioContainers registry cite:[pmid28379341].
 
 //FIXME this seems out of place here, merge with discovery section?
 The BioContainers registry presents Docker containers as well as containers from other technologies such as rkt and Singularity cite:[pmid28494014] making it easier to find and discover packages and related containers.
@@ -112,8 +112,7 @@ Microservice and modular architectures cite:[7436659] provide a way of breaking 
 
 Containers should be defined to be as granular as possible, with the premise _one Tool, one Container_. Each container should encapsulate only one piece of software that performs a unique task with a well-defined goal (e.g. sequence aligner, mass spectra identification).
 
-// need to reformulate "You may use" sentence in a "passive" form to be consistent with the rest of the text.
-This recommendation _One tool, one Container_ should be implemented carefully keeping containers as modular and scoped in functionality as possible. You may use your judgement to compose a layered container based on other containerised tools. Here, we strongly recommend that the modular composition of these tools should also be exposed as a single modular tool - still abiding by "One Tool, One Container".
+This recommendation _one tool, one Container_ should be implemented carefully keeping containers as modular and scoped in functionality as possible. Developers may use their judgement to compose a layered container based on other containerised tools. Here, we strongly recommend that the modular composition of these tools should also be exposed as a single modular tool - still abiding by "one Tool, one Container".
 
 == 3. Tool and container versions should be explicit
 
@@ -167,10 +166,10 @@ WORKDIR /data/
 
 Box 2: BioContainers recipe (Dockerfile) for Comet software. The metadata contains the license of the software.
 
-If a copy is done via `git clone` or equivalent, a specific commit or a tagged version should be specified, never a branch only. Cloning a branch (master, develop, etc.) will always use the latest source code in that branch making impossible to reproduce the build process since the different source code will be built as soon as the branch is updated by the software authors. Upstream authors should be asked to create a stable version of their software with reasonable guarantees that the specified version works as advertise including passing all automated tests (Recommendation #8) -- this will often be a _release_ version. Any patches added on top of the officially released source code should be highlighted.
+If a copy is done via `git clone` or equivalent, a specific commit or a tagged git version should be specified, never a branch only. Cloning a branch (master, develop, etc.) will always use the latest source code in that branch making impossible to reproduce the build process since the different source code will be built as soon as the branch is updated by the software authors. Upstream authors should be asked to create a stable version of their software with reasonable guarantees that the specified version works as advertise including passing all automated tests (Recommendation #8) -- this will often be a _release_ version. Any patches added on top of the officially released source code should be highlighted.
 
 For projects that practice agile software development (including continuous integration) where
-each version is stable, tested and works as advertised, the SVN or git identifier should be used as the tool version for the container -- possibly with the addition of a date in YYYYMMDD format to easily identify newer versions from older versions.
+each version is stable, tested and works as advertised, the SVN or git identifier can be used as the tool version for the container -- possibly with the addition of a date in YYYYMMDD format to easily identify newer versions from older versions. Please note that dependending on the used source code management system (git, hg, svn, cvs ...) it is possible to remove entire commits or rewrite the commit history of a project. Therefor, the savest way is to use a release tarball and can be arcived separately, as Bioconda is doing. 
 
 == 4. Avoid using ENTRYPOINT
 
@@ -180,7 +179,7 @@ It is a well-known feature of Docker that the entry-point of the container can b
 === 4.1. Relevant tools and software should be executable and in the PATH
 
 If for some reason the container needs to expose more than a single executable or script
-(for instance, EMBOSS or OpenMS or other packages with many executables), these should always be executable and be available in the container's default PATH. This will, almost always, be the case by default for everything installed via package managers (dpkg, yum, pip, etc.), but if you are adding tailored made scripts or installing by source, take care of adding the executables to the PATH. This allows the container to be used as an environment (rule 4) or to specify alternative commands to the main `ENTRYPOINT` easily.
+(for instance, EMBOSS or OpenMS (cite?) or other packages with many executables), these should always be executable and be available in the container's default PATH. This will, almost always, be the case by default for everything installed via package managers (dpkg, yum, pip, etc.), but if you are adding tailored made scripts or installing by source, take care of adding the executables to the PATH. This allows the container to be used as an environment (rule 4) or to specify alternative commands to the main `ENTRYPOINT` easily.
 
 == 5. Reduce the size of your container as much as possible
 
@@ -188,7 +187,7 @@ As containers are frequently pushed and pulled (uploaded and downloaded) to/from
 
   - Avoid installing "recommended" packages in apt based systems in your deployed container.
   - Do not keep build tools in the deployed image (this includes compilers and development libraries). You can install these tools in the build image.
-  - Use a lightweight base image for your deployed container, such as Alpine (only use a more mainstream image such as Ubuntu or CentOS if absolutely required for your application to run)
+  - Use a lightweight base image for your deployed container, such as Alpine. Only use a more mainstream image such as Ubuntu or CentOS if absolutely required for your application to run.
 
 == 6. Keep data outside of the container
 
